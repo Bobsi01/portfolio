@@ -1,4 +1,4 @@
-/*
+﻿/*
   ================================================================
   COLOR PALETTE
 
@@ -18,7 +18,7 @@
 
 /* ---------- Custom cursor glow ---------- */
 
-.cursor-glow {
+.cursor-spotlight {
   position: fixed;
   width: var(--glow-size);
   height: var(--glow-size);
@@ -35,11 +35,11 @@
   transform: translate(-50%, -50%);
 }
 
-.cursor-glow.visible {
+.cursor-spotlight.visible {
   opacity: 1;
 }
 
-.dark .cursor-glow {
+.dark .cursor-spotlight {
   background: radial-gradient(
     circle,
     rgba(99, 102, 241, 0.08) 0%,
@@ -50,14 +50,14 @@
 
 /* ---------- Hero gradient ---------- */
 
-.hero-gradient {
+.hero-background {
   background: linear-gradient(135deg, #1e1b4b 0%, #312e81 30%, #3730a3 60%, #155e75 100%);
 }
 
 
 /* ---------- Hero text animations ---------- */
 
-.hero-name {
+.hero-title {
   background: linear-gradient(135deg, #ffffff 0%, #c7d2fe 50%, #22d3ee 100%);
   background-size: 200% 200%;
   -webkit-background-clip: text;
@@ -71,16 +71,16 @@
   50%      { background-position: 100% 50%; }
 }
 
-.hero-line {
+.intro-line {
   opacity: 0;
   transform: translateY(30px);
   animation: hero-enter 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.hero-line:nth-child(1) { animation-delay: 0.15s; }
-.hero-line:nth-child(2) { animation-delay: 0.35s; }
-.hero-line:nth-child(3) { animation-delay: 0.55s; }
-.hero-line:nth-child(4) { animation-delay: 0.75s; }
+.intro-line:nth-child(1) { animation-delay: 0.15s; }
+.intro-line:nth-child(2) { animation-delay: 0.35s; }
+.intro-line:nth-child(3) { animation-delay: 0.55s; }
+.intro-line:nth-child(4) { animation-delay: 0.75s; }
 
 @keyframes hero-enter {
   to {
@@ -92,7 +92,7 @@
 
 /* ---------- Typing cursor ---------- */
 
-.typing-cursor::after {
+.typewriter::after {
   content: '|';
   animation: blink 0.75s step-end infinite;
   margin-left: 2px;
@@ -107,7 +107,7 @@
 
 /* ---------- Status badge ---------- */
 
-.status-dot {
+.availability-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -116,7 +116,7 @@
   position: relative;
 }
 
-.status-dot::before {
+.availability-dot::before {
   content: '';
   position: absolute;
   inset: -3px;
@@ -143,7 +143,7 @@
 
 /* ---------- Hero blobs (parallax targets) ---------- */
 
-.hero-blob {
+.ambient-orb {
   transition: transform 0.15s ease-out;
   will-change: transform;
 }
@@ -187,18 +187,18 @@
 
 /* ---------- 3D card tilt ---------- */
 
-.tilt-card {
+.project-card {
   transform-style: preserve-3d;
   perspective: 800px;
   will-change: transform;
 }
 
-.tilt-card .tilt-inner {
+.project-card .project-card-body {
   transition: transform 0.15s ease-out;
   transform-style: preserve-3d;
 }
 
-.tilt-card .tilt-shine {
+.project-card .card-glare {
   position: absolute;
   inset: 0;
   border-radius: inherit;
@@ -213,84 +213,84 @@
   z-index: 2;
 }
 
-.tilt-card:hover .tilt-shine {
+.project-card:hover .card-glare {
   opacity: 1;
 }
 
 
 /* ---------- Project card image ---------- */
 
-.card-img-wrap {
+.project-thumbnail {
   overflow: hidden;
 }
 
-.card-img-wrap img {
+.project-thumbnail img {
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.tilt-card:hover .card-img-wrap img {
+.project-card:hover .project-thumbnail img {
   transform: scale(1.06);
 }
 
 
 /* ---------- Skill pill interactions ---------- */
 
-.skill-pill-interactive {
+.skill-tag-hoverable {
   cursor: default;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
-.skill-pill-interactive:hover {
+.skill-tag-hoverable:hover {
   transform: translateY(-2px) scale(1.04);
   box-shadow: 0 4px 14px rgba(99, 102, 241, 0.15);
 }
 
-.dark .skill-pill-interactive:hover {
+.dark .skill-tag-hoverable:hover {
   box-shadow: 0 4px 14px rgba(99, 102, 241, 0.2);
 }
 
-.skill-pill-stagger {
+.skill-tag-reveal {
   opacity: 0;
   transform: translateY(10px);
 }
 
-.skill-pill-stagger.pill-visible {
+.skill-tag-reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
 
-.skill-bar-card {
+.skill-card {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.skill-bar-card:hover {
+.skill-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(99, 102, 241, 0.1);
 }
 
-.dark .skill-bar-card:hover {
+.dark .skill-card:hover {
   box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15);
 }
 
-.skill-bar-card img {
+.skill-card img {
   transition: transform 0.3s ease;
 }
 
-.skill-bar-card:hover img {
+.skill-card:hover img {
   transform: scale(1.15) rotate(-5deg);
 }
 
 
 /* ---------- Code block ---------- */
 
-.code-block {
+.code-snippet {
   font-family: 'Courier New', Courier, monospace;
   tab-size: 2;
 }
 
-.code-block code {
+.code-snippet code {
   display: block;
   white-space: pre;
 }
@@ -310,12 +310,12 @@
 
 /* ---------- Section heading decorator ---------- */
 
-.heading-decorator {
+.section-label {
   position: relative;
   display: inline-block;
 }
 
-.heading-decorator::before {
+.section-label::before {
   content: attr(data-decorator);
   position: absolute;
   top: -1.3em;
@@ -331,12 +331,12 @@
 
 /* ---------- About photo ---------- */
 
-.photo-border {
+.profile-photo {
   position: relative;
   z-index: 1;
 }
 
-.photo-border::before {
+.profile-photo::before {
   content: '';
   position: absolute;
   inset: -4px;
@@ -351,20 +351,20 @@
   transition: opacity 0.3s ease;
 }
 
-.photo-border:hover::before {
+.profile-photo:hover::before {
   opacity: 1;
 }
 
 
 /* ---------- CTA button gradient sweep ---------- */
 
-.btn-glow {
+.cta-button {
   position: relative;
   overflow: hidden;
   z-index: 1;
 }
 
-.btn-glow::before {
+.cta-button::before {
   content: '';
   position: absolute;
   top: 0;
@@ -381,26 +381,26 @@
   z-index: -1;
 }
 
-.btn-glow:hover::before {
+.cta-button:hover::before {
   left: 100%;
 }
 
 
 /* ---------- Theme toggle spin ---------- */
 
-.theme-spin {
+.darkmode-toggle {
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
               background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.theme-spin:active {
+.darkmode-toggle:active {
   transform: rotate(180deg) scale(0.9);
 }
 
 
 /* ---------- Section dot nav ---------- */
 
-.dot-nav {
+.side-nav {
   position: fixed;
   right: 1.5rem;
   top: 50%;
@@ -411,7 +411,7 @@
   gap: 12px;
 }
 
-.dot-nav a {
+.side-nav a {
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -420,17 +420,17 @@
   display: block;
 }
 
-.dot-nav a.active {
+.side-nav a.active {
   background: var(--color-primary);
   transform: scale(1.35);
 }
 
-.dot-nav a:hover {
+.side-nav a:hover {
   background: var(--color-accent);
 }
 
 @media (max-width: 768px) {
-  .dot-nav { display: none; }
+  .side-nav { display: none; }
 }
 
 
@@ -441,7 +441,7 @@
   50%      { transform: translateY(8px); }
 }
 
-.scroll-hint {
+.scroll-indicator {
   animation: float 2.4s ease-in-out infinite;
 }
 
@@ -463,17 +463,17 @@
     scroll-snap-type: y mandatory;
   }
 
-  .snap-section {
+  .page-section {
     scroll-snap-align: start;
     min-height: 100vh;
   }
 
-  .snap-section:not(#hero) {
+  .page-section:not(#hero) {
     display: flex;
     align-items: center;
   }
 
-  .snap-section:not(#hero) > div {
+  .page-section:not(#hero) > div {
     width: 100%;
     max-height: 100vh;
     overflow-y: auto;
@@ -483,7 +483,7 @@
     padding-bottom: 2rem;
   }
 
-  .snap-section:not(#hero) > div::-webkit-scrollbar {
+  .page-section:not(#hero) > div::-webkit-scrollbar {
     display: none;
   }
 }
@@ -491,7 +491,7 @@
 
 /* ---------- Floating 3D tech icons ---------- */
 
-.floating-icons {
+.tech-icons {
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -501,12 +501,12 @@
 }
 
 @media (min-width: 768px) {
-  .floating-icons {
+  .tech-icons {
     display: block;
   }
 }
 
-.floating-icon {
+.tech-icon {
   position: absolute;
   left: var(--x);
   top: var(--y);
@@ -526,7 +526,7 @@
   transform-style: preserve-3d;
 }
 
-.floating-icon img {
+.tech-icon img {
   width: 100%;
   height: 100%;
   filter: brightness(0) invert(1);
@@ -550,6 +550,204 @@
 }
 
 
+/* ---------- Floating navigation header ---------- */
+
+.floating-header {
+  position: fixed;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+.floating-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.dark .floating-nav {
+  background: rgba(15, 23, 42, 0.88);
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.nav-link {
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #64748b;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.dark .nav-link {
+  color: #94a3b8;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: rgba(99, 102, 241, 0.1);
+  color: #6366f1;
+}
+
+.dark .nav-link:hover,
+.dark .nav-link.active {
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+}
+
+@media (max-width: 480px) {
+  .floating-header { display: none; }
+}
+
+
+/* ---------- About section — modern additions ---------- */
+
+.about-currently-card {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.dark .about-currently-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.about-interest-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+}
+
+.dark .about-interest-tag {
+  background: #1e293b;
+  color: #94a3b8;
+  border-color: #334155;
+}
+
+.about-interest-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.about-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  padding-left: 0.875rem;
+  border-left: 2px solid #e2e8f0;
+}
+
+.dark .about-timeline {
+  border-color: #334155;
+}
+
+.about-timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  position: relative;
+}
+
+.about-timeline-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  flex-shrink: 0;
+  margin-top: 3px;
+  margin-left: -1.3rem;
+  border: 2px solid white;
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+.dark .about-timeline-dot {
+  border-color: #0f172a;
+}
+
+.about-timeline-dot--accent {
+  background: var(--color-accent);
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+.about-timeline-dot--emerald {
+  background: #34d399;
+  box-shadow: 0 0 0 2px #34d399;
+}
+
+
+/* ---------- Contact email card ---------- */
+
+.contact-email-card {
+  display: inline-block;
+  padding: 0.875rem 1.5rem;
+  border-radius: 0.875rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.dark .contact-email-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.contact-email-address {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-email-address:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+.dark .contact-email-address {
+  color: #a5b4fc;
+}
+
+.dark .contact-email-address:hover {
+  color: #ffffff;
+}
+
+.contact-handle {
+  font-size: 0.65rem;
+  color: #94a3b8;
+  font-family: 'Courier New', Courier, monospace;
+  margin-top: 0.15rem;
+}
+
+.dark .contact-handle {
+  color: #64748b;
+}
+
+
 /* ---------- Reduced motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {
@@ -564,16 +762,146 @@
     transform: none;
   }
 
-  .hero-line {
+  .intro-line {
     opacity: 1;
     transform: none;
   }
 
-  .skill-pill-stagger {
+  .skill-tag-reveal {
     opacity: 1;
     transform: none;
   }
 
-  .cursor-glow { display: none; }
-  .hero-name { animation: none; }
+  .cursor-spotlight { display: none; }
+  .hero-title { animation: none; }
+}
+
+
+/* ---------- Hero section layout ---------- */
+
+.hero-section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: white;
+}
+
+
+/* ---------- Hero ambient orbs ---------- */
+
+.hero-orb-left {
+  position: absolute;
+  top: 25%;
+  left: -6rem;
+  width: 20rem;
+  height: 20rem;
+  background: rgba(99, 102, 241, 0.20);
+  border-radius: 50%;
+  filter: blur(48px);
+  pointer-events: none;
+}
+
+.hero-orb-right {
+  position: absolute;
+  bottom: 33%;
+  right: -6rem;
+  width: 18rem;
+  height: 18rem;
+  background: rgba(6, 182, 212, 0.15);
+  border-radius: 50%;
+  filter: blur(48px);
+  pointer-events: none;
+}
+
+
+/* ---------- Scroll indicator position ---------- */
+
+/* animation already declared above; add positioning here */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2.5rem;
+  z-index: 10;
+}
+
+
+/* ---------- Hero wave ---------- */
+
+.hero-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  line-height: 0;
+}
+
+
+/* ---------- Section mobile padding ---------- */
+
+@media (max-width: 767px) {
+  .page-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+
+/* ---------- Alternate section background ---------- */
+
+.alt-section {
+  background: #f8fafc;
+}
+
+.dark .alt-section {
+  background: rgba(30, 41, 59, 0.40);
+}
+
+
+/* ---------- Code window wrapper ---------- */
+
+.code-window {
+  margin-top: 2rem;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.dark .code-window {
+  border-color: #334155;
+}
+
+
+/* ---------- Code snippet colours + layout ---------- */
+
+/* (font-family / tab-size already set above) */
+.code-snippet {
+  padding: 1rem;
+  font-size: 0.75rem;
+  line-height: 1.625;
+  background: #f8fafc;
+  color: #334155;
+  overflow-x: auto;
+}
+
+.dark .code-snippet {
+  background: #0f172a;
+  color: #cbd5e1;
+}
+
+
+/* ---------- Skill card padding ---------- */
+
+/* transition / hover already declared above */
+.skill-card {
+  padding: 1rem;
+}
+
+
+/* ---------- Pill group card padding ---------- */
+
+.pill-group-card {
+  padding: 1.25rem;
 }

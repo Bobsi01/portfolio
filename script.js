@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
 
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -24,7 +24,7 @@
      Cursor glow (desktop only, respects reduced motion)
      ======================================================== */
 
-  var glow = document.getElementById('cursor-glow');
+  var glow = document.getElementById('cursor-spotlight');
 
   if (glow && !prefersReducedMotion && window.innerWidth > 768) {
     document.addEventListener('mousemove', function (e) {
@@ -102,7 +102,7 @@
      ======================================================== */
 
   var heroSection = document.getElementById('hero');
-  var blobs = document.querySelectorAll('.hero-blob');
+  var blobs = document.querySelectorAll('.ambient-orb');
 
   if (heroSection && blobs.length && !prefersReducedMotion) {
     heroSection.addEventListener('mousemove', function (e) {
@@ -202,10 +202,10 @@
     var pillObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-        var pills = entry.target.querySelectorAll('.skill-pill-stagger');
+        var pills = entry.target.querySelectorAll('.skill-tag-reveal');
         pills.forEach(function (pill, i) {
           setTimeout(function () {
-            pill.classList.add('pill-visible');
+            pill.classList.add('is-visible');
           }, i * 60);
         });
         pillObserver.unobserve(entry.target);
@@ -214,8 +214,8 @@
 
     skillSections.forEach(function (el) { pillObserver.observe(el); });
   } else {
-    document.querySelectorAll('.skill-pill-stagger').forEach(function (p) {
-      p.classList.add('pill-visible');
+    document.querySelectorAll('.skill-tag-reveal').forEach(function (p) {
+      p.classList.add('is-visible');
     });
   }
 
@@ -223,12 +223,12 @@
      3D tilt effect on project cards
      ======================================================== */
 
-  var tiltCards = document.querySelectorAll('.tilt-card');
+  var tiltCards = document.querySelectorAll('.project-card');
 
   if (!prefersReducedMotion) {
     tiltCards.forEach(function (card) {
-      var inner = card.querySelector('.tilt-inner');
-      var shine = card.querySelector('.tilt-shine');
+      var inner = card.querySelector('.project-card-body');
+      var shine = card.querySelector('.card-glare');
 
       card.addEventListener('mousemove', function (e) {
         var rect = card.getBoundingClientRect();
@@ -259,7 +259,8 @@
      Section dot navigation (active tracking)
      ======================================================== */
 
-  var dotLinks = document.querySelectorAll('.dot-nav a');
+  var dotLinks   = document.querySelectorAll('.side-nav a');
+  var floatLinks  = document.querySelectorAll('.floating-nav .nav-link');
   var sections = [];
 
   dotLinks.forEach(function (link) {
@@ -275,6 +276,12 @@
           if (entry.isIntersecting) {
             dotLinks.forEach(function (d) { d.classList.remove('active'); });
             match.link.classList.add('active');
+
+            // Keep floating nav in sync
+            var href = match.link.getAttribute('href');
+            floatLinks.forEach(function (fl) {
+              fl.classList.toggle('active', fl.getAttribute('href') === href);
+            });
           }
         }
       });

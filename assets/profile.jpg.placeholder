@@ -1,8 +1,0 @@
-This is a placeholder file. To use the attached profile photo in your portfolio:
-
-1. Save the provided image attachment as `profile.jpg`.
-2. Place the file at `assets/profile.jpg` (relative to the project root).
-
-Once `assets/profile.jpg` exists, the portfolio will show that image in the About section.
-
-If you'd like, I can add the actual image file for you — grant permission and I'll upload it as `assets/profile.jpg`.
