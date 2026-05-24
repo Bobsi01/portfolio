@@ -108,3 +108,5 @@
 - Production HTML check found the updated modal CSS rules: `100dvh`, `modal-preview-shot:not`, and `height: clamp(150px`.
 - Production Puppeteer mobile viewport: `390x844`, mobile emulation enabled.
 - Production result: HRIS modal opened with card top `25`, card bottom `832`, close top `38`, close right `371`, close button reachable, card within viewport, modal closed successfully, and no failed page resources were observed.
+- GitHub Actions runner service `actions.runner.Bobsi01-portfolio.bobs-project-vs-portfolio.service` was active on the VPS after installation.
+- `Deploy portfolio` workflow run `26363461099` completed successfully after the runner was installed.

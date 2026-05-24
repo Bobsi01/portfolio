@@ -59,3 +59,6 @@
 - Manually deployed commit `1ac30da` to `/home/portfolio/htdocs/www.bobs-thedev.tech` over SSH using a tar payload containing only `index.html`, `styles.css`, `script.js`, `robots.txt`, `favicon.png`, `assets/`, and `images/`.
 - Ran `sudo nginx -t` after the manual sync; result was successful with existing OCSP stapling warnings only.
 - Verified `https://www.bobs-thedev.tech/?v=1ac30da` returns the updated modal CSS and the production mobile modal keeps the close button visible and tappable.
+- Installed GitHub Actions runner `v2.334.0` on `bobs-project-vs` at `/home/daniel/actions-runner/portfolio` with labels `self-hosted`, `linux`, and `portfolio-vps`.
+- Installed and started systemd service `actions.runner.Bobsi01-portfolio.bobs-project-vs-portfolio.service` as user `daniel`; service reported active and running.
+- Rechecked workflow run `26363461099`; `Sync static site` completed successfully in 18 seconds after the runner started.

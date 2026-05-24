@@ -24,6 +24,13 @@ Recommended runner service user:
 
 - `daniel`, using the existing verified sudo access.
 
+Current runner installation:
+
+- Directory: `/home/daniel/actions-runner/portfolio`
+- Version: `v2.334.0`
+- Service: `actions.runner.Bobsi01-portfolio.bobs-project-vs-portfolio.service`
+- Runner name: `bobs-project-vs-portfolio`
+
 Required runner tools:
 
 - `rsync`
