@@ -64,3 +64,5 @@
 - Rechecked workflow run `26363461099`; `Sync static site` completed successfully in 18 seconds after the runner started.
 - Updated the portfolio mobile layout after iPhone 16 QA: replaced mobile hero `100vh` behavior with visual viewport sizing, moved the hero content higher, kept the Explore button visible, converted the About timeline to a vertical mobile timeline, and hid the fixed theme toggle on mobile and while modals are open.
 - Verified the updated mobile layout locally at `http://127.0.0.1:4173` with Puppeteer using a `393x852` mobile viewport and a `1366x768` desktop viewport.
+- Pushed commit `49d7e8e` to `master`; GitHub Actions `Deploy portfolio` run `26364775244` completed successfully.
+- Verified `https://www.bobs-thedev.tech/?v=49d7e8e` with Puppeteer using a `393x852` mobile viewport: Explore button visible, timeline vertical with no overlaps, modal close button reachable, and fixed theme toggle hidden.

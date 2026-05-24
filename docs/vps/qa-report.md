@@ -121,3 +121,5 @@
 - Modal result: CML modal opened with the body `modal-open` class, fixed theme toggle display was `none`, and the close button remained reachable.
 - Puppeteer desktop viewport: `1366x768`.
 - Desktop result: theme toggle stayed visible on the base page, timeline stayed in grid layout, and the toggle was hidden while the modal was open.
+- Production URL: `https://www.bobs-thedev.tech/?v=49d7e8e`.
+- Production mobile result: Explore button was visible with top `778` and bottom `826`; mobile theme toggle was hidden; timeline track rendered as `flex` with no overlaps; CML modal close button was reachable; no failed page resources were observed.
