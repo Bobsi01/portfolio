@@ -55,3 +55,7 @@
 - Added `docs/vps/github-actions-deployment.md` with the one-time runner setup, deployment behavior, and verification steps.
 - Updated the portfolio project modal for mobile viewports so the modal stays within the visual viewport, the close button remains visible and tappable, and long modal content scrolls inside the info pane.
 - Verified the static portfolio locally at `http://127.0.0.1:4173` with Puppeteer using a `390x844` mobile viewport and a `1366x768` desktop viewport before pushing to production.
+- Pushed commit `1ac30da` to `master`; GitHub Pages deployment completed successfully, but the custom self-hosted `Deploy portfolio` workflow run `26363461099` remained queued for more than 10 minutes.
+- Manually deployed commit `1ac30da` to `/home/portfolio/htdocs/www.bobs-thedev.tech` over SSH using a tar payload containing only `index.html`, `styles.css`, `script.js`, `robots.txt`, `favicon.png`, `assets/`, and `images/`.
+- Ran `sudo nginx -t` after the manual sync; result was successful with existing OCSP stapling warnings only.
+- Verified `https://www.bobs-thedev.tech/?v=1ac30da` returns the updated modal CSS and the production mobile modal keeps the close button visible and tappable.

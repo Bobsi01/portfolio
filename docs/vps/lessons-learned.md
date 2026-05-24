@@ -13,3 +13,4 @@
 - Empty HRMS migration files should be removed or intentionally marked. `2025-11-07_shift_templates.sql` is empty and the runner now skips it.
 - HRMS `includes/encryption.php` was missing a PHP opening tag. PHP lint and PHPUnit caught this; keep both checks in QA.
 - Backup scripts that run `pg_dump` as `postgres` cannot write directly into root-only directories unless root owns the output redirection. Use `sudo -u postgres pg_dump DB > root-owned-file`.
+- A push can succeed while the custom portfolio deploy remains queued if the self-hosted runner is unavailable. Always check the `Deploy portfolio` run status after pushing and verify the production HTML before considering the VPS site updated.
