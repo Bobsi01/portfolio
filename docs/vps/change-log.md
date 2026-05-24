@@ -1,0 +1,57 @@
+# VPS Change Log
+
+## 2026-05-24
+
+- Started implementation for `bobs-project-vs`.
+- Confirmed droplet IPv4 is `139.59.96.240`.
+- Confirmed current local public IP is `136.158.42.216`.
+- Confirmed droplet size before resize is `s-1vcpu-1gb`.
+- Confirmed DigitalOcean currently has an incorrect zone named `www.bobs-thedev.tech`; authoritative zone must be `bobs-thedev.tech`.
+- Created DigitalOcean DNS zone `bobs-thedev.tech`.
+- Added A records for `@`, `www`, `records`, and `hrms`, all pointing to `139.59.96.240`.
+- Removed mistaken DigitalOcean DNS zone `www.bobs-thedev.tech` after confirming it only had default SOA and NS records.
+- Created DigitalOcean snapshot `pre-cloudpanel-2026-05-24`; action `3200504519` completed.
+- Resized droplet from `s-1vcpu-1gb` to `s-1vcpu-2gb`; action `3200505081` completed.
+- Powered droplet back on; action `3200505842` completed.
+- Verified port `22` is reachable after resize.
+- Created sudo user `daniel`, installed the local ED25519 public key, and verified passwordless sudo.
+- Hardened SSH through `/etc/ssh/sshd_config.d/99-portfolio-hardening.conf`.
+- Verified `daniel` SSH remains available and root SSH is denied.
+- Enabled UFW with SSH `22/tcp` and CloudPanel `8443/tcp` limited to `136.158.42.216`, and public web ports `80/tcp` and `443/tcp`.
+- Installed CloudPanel CE using the official installer checksum and `DB_ENGINE=MYSQL_8.0`.
+- Created CloudPanel admin user `bobsi01`; credentials are stored only on the VPS at `/root/portfolio-secrets.txt`.
+- Re-tightened UFW after CloudPanel opened broad panel and SSH rules.
+- Installed PostgreSQL 16, Node.js 22, PHP 8.3 PostgreSQL/common extensions, Fail2Ban, unattended-upgrades, auditd, AIDE, rkhunter, chkrootkit, and backup utilities.
+- Verified PostgreSQL listens on `127.0.0.1:5432` and `[::1]:5432`.
+- Noted pending kernel upgrade from `6.8.0-71-generic` to `6.8.0-117-generic`; reboot required before final QA.
+- Rebooted the VPS and verified kernel `6.8.0-117-generic`.
+- Verified SSH, sudo, UFW, CloudPanel services, PostgreSQL, Fail2Ban, and auditd after reboot.
+- Created CloudPanel sites for `www.bobs-thedev.tech`, `records.bobs-thedev.tech`, and `hrms.bobs-thedev.tech`.
+- Created isolated PostgreSQL databases and users: `records_prod` with `records_app`, and `hrms_prod` with `hrms_app`.
+- Deployed the portfolio static site, Records Laravel app, and HRMS PHP app to their CloudPanel site roots.
+- Configured Records production env with PostgreSQL, database cache/session/queue drivers, database file storage, disabled public registration, and disabled public password reset while SMTP is not configured.
+- Built Records frontend assets with `npm ci --legacy-peer-deps` and `npm run build`.
+- Ran Records migrations and seeders, then installed `/etc/cron.d/records-scheduler`.
+- Configured HRMS production env with PostgreSQL, empty `BASE_URL`, encryption key, and tool secret.
+- Imported the HRMS PostgreSQL schema, ran HRMS migrations, and reset the superadmin account using the stored production secret.
+- Fixed HRMS deployment compatibility issues in `tools/migrate.php` and `database/migrations/2025-11-08_overtime_tracking.sql`.
+- Fixed HRMS `includes/encryption.php` so the encryption helper is valid PHP and passes the unit test suite.
+- Added Nginx sensitive-path deny rules through `/etc/nginx/snippets/portfolio-sensitive-deny.conf`.
+- Removed operational docs, agent rules, capture scripts, and setup notes from the deployed portfolio web root.
+- Updated HRMS Nginx routing so extensionless PHP routes execute through PHP-FPM instead of redirect-looping or serving source.
+- Issued Let's Encrypt certificates for `www.bobs-thedev.tech`, `bobs-thedev.tech`, `records.bobs-thedev.tech`, and `hrms.bobs-thedev.tech`.
+- Captured and deployed portfolio project images under `/home/portfolio/htdocs/www.bobs-thedev.tech/images`.
+- Installed root-only backup automation at `/usr/local/sbin/portfolio-backup.sh`, scheduled daily through `/etc/cron.d/portfolio-backups`, and logged to `/var/log/portfolio/backup.log`.
+- Ran the first backup successfully at `/var/backups/portfolio/20260524T073835Z`.
+- Verified production login smoke tests for Records admin and HRMS superadmin without printing secrets.
+- Ran independent QA agents for VPS/security and app/browser/database review, then remediated their high and medium findings.
+- Rechecked public browsing after user reported the domain was not browsable.
+- Confirmed public DNS for `bobs-thedev.tech`, `www`, `records`, and `hrms` resolves to `139.59.96.240` through Cloudflare, Google, Quad9, and OpenDNS.
+- Added `robots.txt`, `favicon.png`, and expected `favicon.ico` files to remove browser missing-resource errors.
+- Refreshed portfolio project tile screenshots and modal screenshots.
+- Added three modal screenshots for HRMS, Records, AgriSOS, and CML, using the first screenshot as the tile preview.
+- Verified the deployed portfolio loads all tile and modal images at `1440x900` with zero browser 4xx or 5xx resource responses.
+- Added GitHub Actions workflow `.github/workflows/deploy-portfolio.yml` to sync the static portfolio to `/home/portfolio/htdocs/www.bobs-thedev.tech` from a self-hosted VPS runner on pushes to `master`.
+- Added `docs/vps/github-actions-deployment.md` with the one-time runner setup, deployment behavior, and verification steps.
+- Updated the portfolio project modal for mobile viewports so the modal stays within the visual viewport, the close button remains visible and tappable, and long modal content scrolls inside the info pane.
+- Verified the static portfolio locally at `http://127.0.0.1:4173` with Puppeteer using a `390x844` mobile viewport and a `1366x768` desktop viewport before pushing to production.

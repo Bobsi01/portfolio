@@ -1,0 +1,88 @@
+name: Deploy portfolio
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - index.html
+      - styles.css
+      - script.js
+      - robots.txt
+      - favicon.png
+      - favicon.ico
+      - assets/**
+      - images/**
+      - .github/workflows/deploy-portfolio.yml
+  workflow_dispatch:
+
+concurrency:
+  group: portfolio-production
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Sync static site
+    runs-on:
+      - self-hosted
+      - linux
+      - portfolio-vps
+    timeout-minutes: 10
+
+    env:
+      PORTFOLIO_ROOT: /home/portfolio/htdocs/www.bobs-thedev.tech
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Verify runner tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          command -v rsync >/dev/null
+          command -v sudo >/dev/null
+          command -v curl >/dev/null
+
+      - name: Prepare deploy payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf .deploy-portfolio
+          mkdir -p .deploy-portfolio
+
+          rsync -a --relative \
+            index.html \
+            styles.css \
+            script.js \
+            robots.txt \
+            favicon.png \
+            assets/ \
+            images/ \
+            .deploy-portfolio/
+
+          if [ -f favicon.ico ]; then
+            cp favicon.ico .deploy-portfolio/favicon.ico
+          else
+            cp favicon.png .deploy-portfolio/favicon.ico
+          fi
+
+      - name: Publish portfolio files
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo mkdir -p "$PORTFOLIO_ROOT"
+          sudo rsync -a --delete --exclude='.well-known/' .deploy-portfolio/ "$PORTFOLIO_ROOT/"
+          sudo chown -R portfolio:portfolio "$PORTFOLIO_ROOT"
+          sudo find "$PORTFOLIO_ROOT" -type d -exec chmod 755 {} +
+          sudo find "$PORTFOLIO_ROOT" -type f -exec chmod 644 {} +
+
+      - name: Verify Nginx and public site
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo nginx -t
+          curl -fsS --max-time 20 https://www.bobs-thedev.tech/ >/dev/null

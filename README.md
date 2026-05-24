@@ -17,13 +17,15 @@ README.md    → This file
 2. Open `index.html` in your browser
 3. That's it
 
-## Deploying to GitHub Pages
+## Deploying to Production
 
-1. Push this repo to GitHub
-2. Go to **Settings → Pages**
-3. Under **Source**, select **Deploy from a branch**
-4. Choose `main` (or `master`) and `/ (root)`
-5. Click **Save** — your site will be live at `https://<username>.github.io/<repo-name>/`
+Production deploys are handled by GitHub Actions. Every push to `master` that changes the public portfolio files runs `.github/workflows/deploy-portfolio.yml` on the VPS self-hosted runner and syncs the static site to:
+
+```
+/home/portfolio/htdocs/www.bobs-thedev.tech
+```
+
+See `docs/vps/github-actions-deployment.md` for the one-time runner setup and verification steps.
 
 ## Editing Content
 
