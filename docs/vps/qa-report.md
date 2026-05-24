@@ -110,3 +110,14 @@
 - Production result: HRIS modal opened with card top `25`, card bottom `832`, close top `38`, close right `371`, close button reachable, card within viewport, modal closed successfully, and no failed page resources were observed.
 - GitHub Actions runner service `actions.runner.Bobsi01-portfolio.bobs-project-vs-portfolio.service` was active on the VPS after installation.
 - `Deploy portfolio` workflow run `26363461099` completed successfully after the runner was installed.
+
+## Portfolio iPhone Layout Recheck
+
+- Date: 2026-05-24.
+- Local static server: `http://127.0.0.1:4173`.
+- Puppeteer mobile viewport: `393x852`, mobile emulation enabled.
+- Hero result: Explore button was visible with top `772` and bottom `820`; mobile theme toggle was hidden.
+- Timeline result: mobile timeline track rendered as `flex`, all timeline cards had width `266`, and no card overlaps were detected.
+- Modal result: CML modal opened with the body `modal-open` class, fixed theme toggle display was `none`, and the close button remained reachable.
+- Puppeteer desktop viewport: `1366x768`.
+- Desktop result: theme toggle stayed visible on the base page, timeline stayed in grid layout, and the toggle was hidden while the modal was open.

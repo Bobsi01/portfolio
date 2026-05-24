@@ -62,3 +62,5 @@
 - Installed GitHub Actions runner `v2.334.0` on `bobs-project-vs` at `/home/daniel/actions-runner/portfolio` with labels `self-hosted`, `linux`, and `portfolio-vps`.
 - Installed and started systemd service `actions.runner.Bobsi01-portfolio.bobs-project-vs-portfolio.service` as user `daniel`; service reported active and running.
 - Rechecked workflow run `26363461099`; `Sync static site` completed successfully in 18 seconds after the runner started.
+- Updated the portfolio mobile layout after iPhone 16 QA: replaced mobile hero `100vh` behavior with visual viewport sizing, moved the hero content higher, kept the Explore button visible, converted the About timeline to a vertical mobile timeline, and hid the fixed theme toggle on mobile and while modals are open.
+- Verified the updated mobile layout locally at `http://127.0.0.1:4173` with Puppeteer using a `393x852` mobile viewport and a `1366x768` desktop viewport.

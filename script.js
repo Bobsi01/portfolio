@@ -436,6 +436,7 @@ function openProjectModal(id) {
   modal.classList.add('is-visible');
 
   document.body.style.overflow = 'hidden';
+  document.body.classList.add('modal-open');
 }
 
 function closeProjectModal() {
@@ -448,6 +449,7 @@ function closeProjectModal() {
   modalCloseTimer = setTimeout(function () {
     modal.classList.remove('is-open');
     document.body.style.overflow = '';
+    document.body.classList.remove('modal-open');
     modalCloseTimer = null;
   }, 360);
 }
