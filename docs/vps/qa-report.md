@@ -169,3 +169,7 @@
 - Puppeteer mobile viewport: `393x852`, mobile emulation enabled.
 - Mobile result: project cards rendered as a single column, stack rows stayed compact, and no failed resources were observed.
 - Modal result: HRMS, AgriSOS, Records, and CML modals still retained full detail with 7, 12, 8, and 12 tech tags respectively; every modal close button remained visible.
+- Production URL: `https://www.bobs-thedev.tech/?v=8495cfa`.
+- Production laptop result: `styles.css?v=20260525-4` loaded, Projects wrapper computed `max-height: none` and `overflow-y: visible`, all card heights were `358`, every stack row stayed at one row, and no failed resources were observed.
+- Production mobile result: project cards rendered as a single column with equal `358` heights, stack rows stayed compact with `+N` chips, and no failed resources were observed.
+- Production modal result: HRMS, AgriSOS, Records, and CML modals retained 7, 12, 8, and 12 tech tags respectively, and every modal close button remained visible.
