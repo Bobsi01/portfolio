@@ -94,3 +94,5 @@
 - Adjusted the portfolio link preview artwork after Messenger debugger review: moved the code graphic into a cleaner safe area, changed the role label to `Full Stack Software Developer`, and changed preview chips to `AI Tools`, `Web App`, and `Mobile App`.
 - Generated `assets/share-preview-20260525-v2.png` and updated OG/Twitter metadata to point to the new filename for scraper cache refresh.
 - Verified the local metadata at `http://127.0.0.1:4173`: OG/Twitter image tags pointed to the `v2` PNG, it loaded at `1200x630`, and no failed resources were observed.
+- Pushed commit `2b99288` to `master`; GitHub Actions `Deploy portfolio` run `26377983392` completed successfully.
+- Verified `https://www.bobs-thedev.tech/?v=2b99288` with Puppeteer: production OG/Twitter metadata pointed to `assets/share-preview-20260525-v2.png`, the image returned `200`, loaded at `1200x630`, and no failed resources were observed.
