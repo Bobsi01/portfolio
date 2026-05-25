@@ -1,66 +1,69 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Software developer portfolio preview">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Daniel D. Bobis portfolio link preview">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#10143f"/>
-      <stop offset="48%" stop-color="#312e81"/>
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="46%" stop-color="#312e81"/>
       <stop offset="100%" stop-color="#0f766e"/>
     </linearGradient>
-    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#1e293b"/>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1f2937"/>
       <stop offset="100%" stop-color="#0f172a"/>
     </linearGradient>
-    <radialGradient id="glow" cx="50%" cy="35%" r="55%">
-      <stop offset="0%" stop-color="#67e8f9" stop-opacity="0.34"/>
-      <stop offset="100%" stop-color="#67e8f9" stop-opacity="0"/>
+    <radialGradient id="glowA" cx="26%" cy="26%" r="44%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="82%" cy="72%" r="42%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
   <rect width="1200" height="630" fill="url(#bg)"/>
-  <circle cx="260" cy="150" r="230" fill="url(#glow)"/>
-  <circle cx="950" cy="500" r="190" fill="#22d3ee" opacity="0.08"/>
+  <rect width="1200" height="630" fill="url(#glowA)"/>
+  <rect width="1200" height="630" fill="url(#glowB)"/>
 
-  <g opacity="0.25" stroke="#e2e8f0" stroke-width="1">
-    <path d="M0 90H1200"/>
-    <path d="M0 210H1200"/>
-    <path d="M0 330H1200"/>
-    <path d="M0 450H1200"/>
-    <path d="M120 0V630"/>
+  <g opacity="0.16" stroke="#e2e8f0" stroke-width="1">
+    <path d="M0 128H1200"/>
+    <path d="M0 252H1200"/>
+    <path d="M0 376H1200"/>
+    <path d="M0 500H1200"/>
+    <path d="M144 0V630"/>
     <path d="M360 0V630"/>
     <path d="M600 0V630"/>
     <path d="M840 0V630"/>
-    <path d="M1080 0V630"/>
+    <path d="M1056 0V630"/>
   </g>
 
-  <rect x="92" y="92" width="320" height="446" rx="34" fill="url(#panel)" stroke="#38bdf8" stroke-opacity="0.22" stroke-width="2"/>
-  <rect x="120" y="122" width="264" height="22" rx="11" fill="#334155"/>
-  <circle cx="145" cy="133" r="6" fill="#fb7185"/>
-  <circle cx="168" cy="133" r="6" fill="#fbbf24"/>
-  <circle cx="191" cy="133" r="6" fill="#34d399"/>
+  <g transform="translate(88 102)">
+    <rect width="260" height="336" rx="34" fill="url(#card)" stroke="#38bdf8" stroke-opacity="0.24" stroke-width="2"/>
+    <rect x="32" y="34" width="152" height="18" rx="9" fill="#475569"/>
+    <circle cx="32" cy="43" r="6" fill="#fb7185"/>
+    <circle cx="54" cy="43" r="6" fill="#fbbf24"/>
+    <circle cx="76" cy="43" r="6" fill="#34d399"/>
 
-  <rect x="126" y="170" width="228" height="174" rx="22" fill="#0b1220" stroke="#94a3b8" stroke-opacity="0.18"/>
-  <path d="M156 214l-36 29 36 29" fill="none" stroke="#22d3ee" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M275 214l36 29-36 29" fill="none" stroke="#a78bfa" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M214 208l-18 68" fill="none" stroke="#f8fafc" stroke-width="16" stroke-linecap="round"/>
-  <rect x="156" y="362" width="168" height="16" rx="8" fill="#cbd5e1" opacity="0.85"/>
-  <rect x="176" y="386" width="126" height="12" rx="6" fill="#64748b" opacity="0.95"/>
+    <rect x="32" y="84" width="196" height="134" rx="22" fill="#0b1220" stroke="#94a3b8" stroke-opacity="0.16"/>
+    <path d="M66 126l-34 25 34 25" fill="none" stroke="#22d3ee" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M172 126l34 25-34 25" fill="none" stroke="#a78bfa" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M126 120l-18 62" fill="none" stroke="#f8fafc" stroke-width="14" stroke-linecap="round"/>
 
-  <rect x="180" y="448" width="124" height="76" rx="18" fill="#111827" stroke="#67e8f9" stroke-opacity="0.26"/>
-  <path d="M206 486h72" stroke="#22d3ee" stroke-width="10" stroke-linecap="round"/>
-  <path d="M224 466h36" stroke="#f8fafc" stroke-width="10" stroke-linecap="round"/>
-
-  <g transform="translate(498 122)">
-    <text x="0" y="0" fill="#67e8f9" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" letter-spacing="0.28em">PORTFOLIO PREVIEW</text>
-    <text x="0" y="86" fill="#f8fafc" font-family="Inter, system-ui, sans-serif" font-size="86" font-weight="800" letter-spacing="-0.04em">Daniel D. Bobis</text>
-    <text x="0" y="154" fill="#c7d2fe" font-family="Inter, system-ui, sans-serif" font-size="40" font-weight="600">Software Developer</text>
-    <text x="0" y="220" fill="#cbd5e1" font-family="Inter, system-ui, sans-serif" font-size="30" font-weight="400">Full-stack systems, AI tools, deployment, and clean code.</text>
+    <rect x="64" y="244" width="132" height="14" rx="7" fill="#cbd5e1" opacity="0.9"/>
+    <rect x="82" y="270" width="96" height="10" rx="5" fill="#64748b"/>
   </g>
 
-  <g transform="translate(498 414)">
-    <rect x="0" y="0" width="118" height="42" rx="21" fill="#1d4ed8" fill-opacity="0.22" stroke="#60a5fa" stroke-opacity="0.24"/>
-    <text x="59" y="27" text-anchor="middle" fill="#dbeafe" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700">Laravel</text>
-    <rect x="132" y="0" width="108" height="42" rx="21" fill="#0f766e" fill-opacity="0.22" stroke="#2dd4bf" stroke-opacity="0.22"/>
-    <text x="186" y="27" text-anchor="middle" fill="#ccfbf1" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700">AI Tools</text>
-    <rect x="254" y="0" width="122" height="42" rx="21" fill="#7c3aed" fill-opacity="0.20" stroke="#c4b5fd" stroke-opacity="0.22"/>
-    <text x="315" y="27" text-anchor="middle" fill="#ede9fe" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700">PostgreSQL</text>
+  <g transform="translate(416 132)">
+    <text x="0" y="0" fill="#67e8f9" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="0.2em">PORTFOLIO</text>
+    <text x="0" y="92" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="82" font-weight="800">Daniel D. Bobis</text>
+    <text x="0" y="156" fill="#c7d2fe" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="650">Software Developer</text>
+    <text x="0" y="218" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="450">Full-stack systems, AI tools, and deployment.</text>
+  </g>
+
+  <g transform="translate(416 414)">
+    <rect x="0" y="0" width="126" height="42" rx="21" fill="#1d4ed8" fill-opacity="0.24" stroke="#60a5fa" stroke-opacity="0.3"/>
+    <text x="63" y="27" text-anchor="middle" fill="#dbeafe" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Laravel</text>
+    <rect x="142" y="0" width="116" height="42" rx="21" fill="#0f766e" fill-opacity="0.26" stroke="#2dd4bf" stroke-opacity="0.3"/>
+    <text x="200" y="27" text-anchor="middle" fill="#ccfbf1" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">AI Tools</text>
+    <rect x="274" y="0" width="142" height="42" rx="21" fill="#7c3aed" fill-opacity="0.24" stroke="#c4b5fd" stroke-opacity="0.3"/>
+    <text x="345" y="27" text-anchor="middle" fill="#ede9fe" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">PostgreSQL</text>
   </g>
 </svg>
