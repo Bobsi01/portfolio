@@ -74,3 +74,5 @@
 - Fixed the floating OpenAI/ChatGPT-style hero icon by replacing the broken custom icon with a hosted OpenAI SVG and verified there were no icon 404s locally.
 - Re-enabled all floating hero tech icons on mobile at smaller sizes and positioned them outside the main hero text area.
 - Moved the desktop timeline dates for Student Assistant and CML Developer Intern below the timeline rail.
+- Pushed commit `b7f42fb` to `master`; GitHub Actions `Deploy portfolio` run `26377014415` completed successfully.
+- Verified `https://www.bobs-thedev.tech/?v=b7f42fb` with Puppeteer: mobile floating icons were visible without hero text overlap, CML modal tags matched the updated stack, desktop timeline dates rendered below the rail, and no failed resources were observed.

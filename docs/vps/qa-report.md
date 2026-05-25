@@ -136,3 +136,7 @@
 - Mobile hero result: 18 floating icons visible, maximum icon width `22`, no overlap with hero content, mobile theme toggle hidden, and the OpenAI icon loaded from `openai.svg`.
 - Modal result: HRMS, AgriSOS, Records, and CML tech-stack tags matched the updated content; no icon or page resource failures were observed after replacing the Excel icon URL.
 - Desktop timeline result: `Sept 2023` and `2026` timeline dates now render below the timeline rail.
+- Production URL: `https://www.bobs-thedev.tech/?v=b7f42fb`.
+- Production mobile result: 18 floating icons visible, maximum icon width `22`, no overlap with hero content, and mobile theme toggle hidden.
+- Production modal result: CML modal tags were `Laravel 13`, `PHP 8.4`, `React 19`, `Inertia.js`, `Tailwind 4`, `PostgreSQL`, `Reverb`, `Sanctum`, `Spatie`, `AWS S3`, `DOMpdf`, and `Excel`.
+- Production desktop result: timeline dates, including `Sept 2023` and `2026`, rendered below the rail. No failed resources were observed.
