@@ -140,3 +140,15 @@
 - Production mobile result: 18 floating icons visible, maximum icon width `22`, no overlap with hero content, and mobile theme toggle hidden.
 - Production modal result: CML modal tags were `Laravel 13`, `PHP 8.4`, `React 19`, `Inertia.js`, `Tailwind 4`, `PostgreSQL`, `Reverb`, `Sanctum`, `Spatie`, `AWS S3`, `DOMpdf`, and `Excel`.
 - Production desktop result: timeline dates, including `Sept 2023` and `2026`, rendered below the rail. No failed resources were observed.
+
+## Portfolio External CSS And Mobile Recheck
+
+- Date: 2026-05-25.
+- Local static server: `http://127.0.0.1:4173`.
+- Source result: `index.html` no longer contains the inline `text/tailwindcss` component stylesheet; component styles load from `styles.css?v=20260525-3`.
+- Puppeteer iPhone viewport: `393x852`, mobile emulation enabled.
+- iPhone result: Explore button was visible with top `723` and bottom `772`; mobile timeline track rendered as `flex` with `column` direction; mobile theme toggle was hidden; no failed resources were observed.
+- Puppeteer smaller-phone viewport: `375x667`, mobile emulation enabled.
+- Smaller-phone result: Explore button was visible with top `540` and bottom `588`; mobile timeline track rendered as `flex` with `column` direction; mobile theme toggle was hidden; no failed resources were observed.
+- Puppeteer desktop viewport: `1440x900`.
+- Desktop result: timeline stayed in desktop grid layout, Explore button was visible, theme toggle stayed visible, and no failed resources were observed.

@@ -76,3 +76,7 @@
 - Moved the desktop timeline dates for Student Assistant and CML Developer Intern below the timeline rail.
 - Pushed commit `b7f42fb` to `master`; GitHub Actions `Deploy portfolio` run `26377014415` completed successfully.
 - Verified `https://www.bobs-thedev.tech/?v=b7f42fb` with Puppeteer: mobile floating icons were visible without hero text overlap, CML modal tags matched the updated stack, desktop timeline dates rendered below the rail, and no failed resources were observed.
+- Moved portfolio component styles out of the inline Tailwind Play CSS block into `styles.css`, then cache-busted `styles.css` and `script.js` with `v=20260525-3`.
+- Widened the mobile About timeline breakpoint to `900px` so iPhone and narrow browser contexts use the vertical timeline reliably.
+- Raised the mobile Explore button above mobile browser chrome and added smaller-phone hero text spacing rules for short screens.
+- Verified the local portfolio at `http://127.0.0.1:4173` with Puppeteer using `393x852`, `375x667`, and `1440x900` viewports before pushing.

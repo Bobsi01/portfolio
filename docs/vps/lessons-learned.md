@@ -16,3 +16,4 @@
 - A push can succeed while the custom portfolio deploy remains queued if the self-hosted runner is unavailable. Always check the `Deploy portfolio` run status after pushing and verify the production HTML before considering the VPS site updated.
 - Mobile Safari-style browser chrome can make `100vh` taller than the visible page area, which pushes bottom-pinned controls such as the Explore button out of view. Use `svh`/`dvh` for mobile hero sections and verify with an iPhone-sized viewport.
 - Fixed floating controls can visually sit above modal content unless the page explicitly hides or disables them during modal-open state.
+- iPhone Safari may keep older static CSS aggressively during repeated layout fixes. Version stylesheet and script URLs when shipping mobile CSS changes, then verify production with a cache-busted page URL.
