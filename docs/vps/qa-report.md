@@ -183,3 +183,5 @@
 - Visual result: preview text is shorter and placed in a safer central area to avoid right-edge cropping in Messenger-style link cards.
 - Production URL: `https://www.bobs-thedev.tech/?v=b7be857`.
 - Production result: page returned `200`, `assets/share-preview-20260525.png` returned `200`, OG/Twitter metadata pointed to the new PNG, the image loaded at `1200x630`, and no failed resources were observed.
+- Follow-up local result: `assets/share-preview-20260525-v2.png` contains the adjusted code graphic spacing, `Full Stack Software Developer` role label, and `AI Tools`, `Web App`, and `Mobile App` chips.
+- Follow-up metadata result: local OG/Twitter image tags pointed to `https://www.bobs-thedev.tech/assets/share-preview-20260525-v2.png`, the image loaded at `1200x630`, and no failed resources were observed.

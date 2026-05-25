@@ -35,35 +35,35 @@
     <path d="M1056 0V630"/>
   </g>
 
-  <g transform="translate(88 102)">
-    <rect width="260" height="336" rx="34" fill="url(#card)" stroke="#38bdf8" stroke-opacity="0.24" stroke-width="2"/>
+  <g transform="translate(82 136)">
+    <rect width="246" height="292" rx="32" fill="url(#card)" stroke="#38bdf8" stroke-opacity="0.24" stroke-width="2"/>
     <rect x="32" y="34" width="152" height="18" rx="9" fill="#475569"/>
     <circle cx="32" cy="43" r="6" fill="#fb7185"/>
     <circle cx="54" cy="43" r="6" fill="#fbbf24"/>
     <circle cx="76" cy="43" r="6" fill="#34d399"/>
 
-    <rect x="32" y="84" width="196" height="134" rx="22" fill="#0b1220" stroke="#94a3b8" stroke-opacity="0.16"/>
-    <path d="M66 126l-34 25 34 25" fill="none" stroke="#22d3ee" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M172 126l34 25-34 25" fill="none" stroke="#a78bfa" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M126 120l-18 62" fill="none" stroke="#f8fafc" stroke-width="14" stroke-linecap="round"/>
+    <rect x="30" y="84" width="186" height="118" rx="21" fill="#0b1220" stroke="#94a3b8" stroke-opacity="0.16"/>
+    <path d="M62 124l-32 24 32 24" fill="none" stroke="#22d3ee" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M164 124l32 24-32 24" fill="none" stroke="#a78bfa" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M122 118l-18 58" fill="none" stroke="#f8fafc" stroke-width="14" stroke-linecap="round"/>
 
-    <rect x="64" y="244" width="132" height="14" rx="7" fill="#cbd5e1" opacity="0.9"/>
-    <rect x="82" y="270" width="96" height="10" rx="5" fill="#64748b"/>
+    <rect x="58" y="226" width="130" height="14" rx="7" fill="#cbd5e1" opacity="0.9"/>
+    <rect x="76" y="252" width="94" height="10" rx="5" fill="#64748b"/>
   </g>
 
   <g transform="translate(416 132)">
     <text x="0" y="0" fill="#67e8f9" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="0.2em">PORTFOLIO</text>
     <text x="0" y="92" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="82" font-weight="800">Daniel D. Bobis</text>
-    <text x="0" y="156" fill="#c7d2fe" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="650">Software Developer</text>
+    <text x="0" y="156" fill="#c7d2fe" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="650">Full Stack Software Developer</text>
     <text x="0" y="218" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="450">Full-stack systems, AI tools, and deployment.</text>
   </g>
 
   <g transform="translate(416 414)">
     <rect x="0" y="0" width="126" height="42" rx="21" fill="#1d4ed8" fill-opacity="0.24" stroke="#60a5fa" stroke-opacity="0.3"/>
-    <text x="63" y="27" text-anchor="middle" fill="#dbeafe" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Laravel</text>
-    <rect x="142" y="0" width="116" height="42" rx="21" fill="#0f766e" fill-opacity="0.26" stroke="#2dd4bf" stroke-opacity="0.3"/>
-    <text x="200" y="27" text-anchor="middle" fill="#ccfbf1" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">AI Tools</text>
-    <rect x="274" y="0" width="142" height="42" rx="21" fill="#7c3aed" fill-opacity="0.24" stroke="#c4b5fd" stroke-opacity="0.3"/>
-    <text x="345" y="27" text-anchor="middle" fill="#ede9fe" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">PostgreSQL</text>
+    <text x="63" y="27" text-anchor="middle" fill="#dbeafe" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">AI Tools</text>
+    <rect x="142" y="0" width="118" height="42" rx="21" fill="#0f766e" fill-opacity="0.26" stroke="#2dd4bf" stroke-opacity="0.3"/>
+    <text x="201" y="27" text-anchor="middle" fill="#ccfbf1" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Web App</text>
+    <rect x="276" y="0" width="136" height="42" rx="21" fill="#7c3aed" fill-opacity="0.24" stroke="#c4b5fd" stroke-opacity="0.3"/>
+    <text x="344" y="27" text-anchor="middle" fill="#ede9fe" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Mobile App</text>
   </g>
 </svg>
