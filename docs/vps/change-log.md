@@ -89,3 +89,5 @@
 - Verified `https://www.bobs-thedev.tech/?v=8495cfa` with Puppeteer: production loaded `styles.css?v=20260525-4`, project cards stayed equal height with one stack-chip row, Projects wrapper used normal page flow, and modals retained the full stack details.
 - Rebuilt the portfolio Open Graph preview graphic as a safer `1200x630` PNG, updated OG/Twitter metadata to use `assets/share-preview-20260525.png`, and kept the SVG source aligned.
 - Verified the local metadata at `http://127.0.0.1:4173`: OG/Twitter image tags pointed to the new PNG, the image loaded at `1200x630`, and no failed resources were observed.
+- Pushed commit `b7be857` to `master`; GitHub Actions `Deploy portfolio` run `26377663661` completed successfully.
+- Verified `https://www.bobs-thedev.tech/?v=b7be857` with Puppeteer: production OG/Twitter metadata pointed to `assets/share-preview-20260525.png`, the image returned `200`, loaded at `1200x630`, and no failed resources were observed.

@@ -181,3 +181,5 @@
 - Source result: Open Graph and Twitter image metadata now point to `https://www.bobs-thedev.tech/assets/share-preview-20260525.png` with explicit `image/png`, `1200`, and `630` metadata.
 - Image result: `assets/share-preview-20260525.png` loaded locally with natural dimensions `1200x630`; no failed resources were observed.
 - Visual result: preview text is shorter and placed in a safer central area to avoid right-edge cropping in Messenger-style link cards.
+- Production URL: `https://www.bobs-thedev.tech/?v=b7be857`.
+- Production result: page returned `200`, `assets/share-preview-20260525.png` returned `200`, OG/Twitter metadata pointed to the new PNG, the image loaded at `1200x630`, and no failed resources were observed.
