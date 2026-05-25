@@ -1448,6 +1448,15 @@ body.modal-open .darkmode-toggle {
   pointer-events: none;
 }
 
+/* Hide hero floating icons + orbs when modal is open —
+   they're visible at the screen edges around the modal */
+body.modal-open .tech-icons,
+body.modal-open .ambient-orb {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+}
+
 
 /* ---------- Section dot nav ---------- */
 
@@ -1566,7 +1575,7 @@ body.modal-open .darkmode-toggle {
   pointer-events: none;
   overflow: hidden;
   display: block;
-  perspective: 900px;
+  /* No perspective needed — 2D float animation avoids GPU layer stall */
 }
 
 @media (min-width: 768px) {
@@ -1585,17 +1594,20 @@ body.modal-open .darkmode-toggle {
   align-items: center;
   justify-content: center;
   padding: 0;
-  transform-style: preserve-3d;
   transform-origin: center;
-  will-change: transform;
-  /* Explicit animation declaration — avoids cached/stuck state on some laptop GPUs */
-  animation-name: float-3d;
+  /*
+   * 2D-only float — avoids the Intel/AMD GPU compositor stall caused by
+   * transform-style:preserve-3d + will-change:transform + rotateX/Y.
+   * animation-fill-mode:none keeps icons visible at natural position
+   * before the delay fires (prevents invisible-until-delay bug).
+   */
+  animation-name: icon-float;
   animation-duration: var(--dur, 15s);
   animation-timing-function: ease-in-out;
   animation-delay: var(--delay, 0s);
   animation-iteration-count: infinite;
   animation-direction: alternate;
-  animation-fill-mode: both;
+  animation-fill-mode: none;
   animation-play-state: running;
 }
 
@@ -1603,21 +1615,21 @@ body.modal-open .darkmode-toggle {
   content: '';
   position: absolute;
   left: 50%;
-  bottom: -0.8rem;
-  width: 72%;
-  height: 18%;
+  bottom: -0.7rem;
+  width: 65%;
+  height: 14%;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.26);
-  filter: blur(10px);
-  transform: translateX(-50%) rotateX(70deg);
-  opacity: 0.52;
-  animation-name: float-shadow;
+  background: rgba(0, 0, 0, 0.22);
+  filter: blur(8px);
+  transform: translateX(-50%);
+  opacity: 0.45;
+  animation-name: icon-shadow;
   animation-duration: var(--dur, 15s);
   animation-timing-function: ease-in-out;
   animation-delay: var(--delay, 0s);
   animation-iteration-count: infinite;
   animation-direction: alternate;
-  animation-fill-mode: both;
+  animation-fill-mode: none;
   animation-play-state: running;
 }
 
@@ -1625,10 +1637,10 @@ body.modal-open .darkmode-toggle {
 .tech-icon-svg {
   width: 100%;
   height: 100%;
-  filter: saturate(1.16) drop-shadow(0 12px 18px rgba(15, 23, 42, 0.32)) drop-shadow(0 0 18px rgba(255, 255, 255, 0.18));
+  filter: saturate(1.16) drop-shadow(0 10px 16px rgba(15, 23, 42, 0.30)) drop-shadow(0 0 14px rgba(255, 255, 255, 0.16));
   opacity: 0.88;
   object-fit: contain;
-  transform: translateZ(24px);
+  /* No translateZ — preserve-3d removed */
 }
 
 .tech-icon-svg {
@@ -1639,28 +1651,64 @@ body.modal-open .darkmode-toggle {
 .tech-icon:first-child img,
 .tech-icon:nth-child(5) img,
 .tech-icon--light img {
-  filter: brightness(0) invert(1) drop-shadow(0 12px 18px rgba(15, 23, 42, 0.34)) drop-shadow(0 0 18px rgba(255, 255, 255, 0.2));
+  filter: brightness(0) invert(1) drop-shadow(0 10px 16px rgba(15, 23, 42, 0.32)) drop-shadow(0 0 14px rgba(255, 255, 255, 0.18));
 }
 
-@keyframes float-3d {
-  0% {
-    transform: translate3d(0, 0, 0) rotateX(12deg) rotateY(-14deg) rotateZ(-2deg);
-  }
-  100% {
-    transform: translate3d(0, var(--float-y, -14px), 28px) rotateX(-8deg) rotateY(16deg) rotateZ(3deg);
-  }
+/* ---------- 2D-safe floating keyframes ---------- */
+
+@keyframes icon-float {
+  0%   { transform: translateY(0)                   rotate(-2deg) scale(1);    }
+  100% { transform: translateY(var(--float-y,-14px)) rotate(2deg)  scale(1.04); }
 }
 
-@keyframes float-shadow {
-  0% {
-    opacity: 0.34;
-    transform: translateX(-50%) scale(0.92) rotateX(70deg);
-  }
-  100% {
-    opacity: 0.16;
-    transform: translateX(-50%) scale(0.64) rotateX(70deg);
-  }
+@keyframes icon-shadow {
+  0%   { opacity: 0.45; transform: translateX(-50%) scale(1);    }
+  100% { opacity: 0.18; transform: translateX(-50%) scale(0.7);  }
 }
+
+/*
+ * Layer 5 — Explicit delay fallback for Chromium < 108 / WebKit builds
+ * that fail to resolve CSS custom properties inside animation-delay.
+ * These nth-child rules override --delay with hard-coded values.
+ */
+.tech-icons > .tech-icon:nth-child(1)  { animation-delay: 0s;    }
+.tech-icons > .tech-icon:nth-child(2)  { animation-delay: 0.8s;  }
+.tech-icons > .tech-icon:nth-child(3)  { animation-delay: 1.5s;  }
+.tech-icons > .tech-icon:nth-child(4)  { animation-delay: 2s;    }
+.tech-icons > .tech-icon:nth-child(5)  { animation-delay: 0.5s;  }
+.tech-icons > .tech-icon:nth-child(6)  { animation-delay: 1.2s;  }
+.tech-icons > .tech-icon:nth-child(7)  { animation-delay: 3s;    }
+.tech-icons > .tech-icon:nth-child(8)  { animation-delay: 2.5s;  }
+.tech-icons > .tech-icon:nth-child(9)  { animation-delay: 1.8s;  }
+.tech-icons > .tech-icon:nth-child(10) { animation-delay: 2.2s;  }
+.tech-icons > .tech-icon:nth-child(11) { animation-delay: 3.4s;  }
+.tech-icons > .tech-icon:nth-child(12) { animation-delay: 4.2s;  }
+.tech-icons > .tech-icon:nth-child(13) { animation-delay: 3.8s;  }
+.tech-icons > .tech-icon:nth-child(14) { animation-delay: 4.8s;  }
+.tech-icons > .tech-icon:nth-child(15) { animation-delay: 5.2s;  }
+.tech-icons > .tech-icon:nth-child(16) { animation-delay: 5.8s;  }
+.tech-icons > .tech-icon:nth-child(17) { animation-delay: 6.4s;  }
+.tech-icons > .tech-icon:nth-child(18) { animation-delay: 7s;    }
+
+/* Same for shadow pseudo-elements via explicit duration override */
+.tech-icons > .tech-icon:nth-child(1)::after  { animation-delay: 0s;    }
+.tech-icons > .tech-icon:nth-child(2)::after  { animation-delay: 0.8s;  }
+.tech-icons > .tech-icon:nth-child(3)::after  { animation-delay: 1.5s;  }
+.tech-icons > .tech-icon:nth-child(4)::after  { animation-delay: 2s;    }
+.tech-icons > .tech-icon:nth-child(5)::after  { animation-delay: 0.5s;  }
+.tech-icons > .tech-icon:nth-child(6)::after  { animation-delay: 1.2s;  }
+.tech-icons > .tech-icon:nth-child(7)::after  { animation-delay: 3s;    }
+.tech-icons > .tech-icon:nth-child(8)::after  { animation-delay: 2.5s;  }
+.tech-icons > .tech-icon:nth-child(9)::after  { animation-delay: 1.8s;  }
+.tech-icons > .tech-icon:nth-child(10)::after { animation-delay: 2.2s;  }
+.tech-icons > .tech-icon:nth-child(11)::after { animation-delay: 3.4s;  }
+.tech-icons > .tech-icon:nth-child(12)::after { animation-delay: 4.2s;  }
+.tech-icons > .tech-icon:nth-child(13)::after { animation-delay: 3.8s;  }
+.tech-icons > .tech-icon:nth-child(14)::after { animation-delay: 4.8s;  }
+.tech-icons > .tech-icon:nth-child(15)::after { animation-delay: 5.2s;  }
+.tech-icons > .tech-icon:nth-child(16)::after { animation-delay: 5.8s;  }
+.tech-icons > .tech-icon:nth-child(17)::after { animation-delay: 6.4s;  }
+.tech-icons > .tech-icon:nth-child(18)::after { animation-delay: 7s;    }
 
 
 /* ---------- Floating navigation header ---------- */
@@ -2118,6 +2166,16 @@ body.modal-open .darkmode-toggle {
 
   .cursor-spotlight { display: none; }
   .hero-title { animation: none; }
+
+  /* Layer 4: show icons static (no motion) instead of suppressing them entirely */
+  .tech-icon,
+  .tech-icon::after {
+    animation: none !important;
+  }
+  .tech-icon {
+    opacity: 0.6;
+    transform: none;
+  }
 }
 
 

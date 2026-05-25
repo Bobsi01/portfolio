@@ -79,6 +79,30 @@
     window.addEventListener('resize', function () { resizeCanvas(); initParticles(); });
   }
 
+  /* ---- Layer 3: Animation watchdog ----------------------------------------
+   * Restarts .tech-icon animations if they stalled due to:
+   *   - Tab being backgrounded during page load (Chrome/Edge throttle)
+   *   - GPU compositor freezing the first painted frame
+   * Strategy: toggle animation-name to '' then back (forces reflow + restart).
+   * -----------------------------------------------------------------------*/
+  function restartIconAnimations() {
+    var icons = document.querySelectorAll('.tech-icon');
+    if (!icons.length || prefersReducedMotion) return;
+    icons.forEach(function (el) {
+      el.style.animationName = 'none';
+      el.offsetHeight; // trigger reflow
+      el.style.animationName = '';
+    });
+  }
+
+  // Restart when a backgrounded tab regains focus
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) restartIconAnimations();
+  });
+
+  // One-time health-check: fires after the longest delay (7s) + 2s buffer
+  setTimeout(restartIconAnimations, 9000);
+
   var heroSection = document.getElementById('hero');
   var blobs = document.querySelectorAll('.ambient-orb');
   if (heroSection && blobs.length && !prefersReducedMotion) {
