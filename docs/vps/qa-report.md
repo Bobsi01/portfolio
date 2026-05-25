@@ -152,3 +152,7 @@
 - Smaller-phone result: Explore button was visible with top `540` and bottom `588`; mobile timeline track rendered as `flex` with `column` direction; mobile theme toggle was hidden; no failed resources were observed.
 - Puppeteer desktop viewport: `1440x900`.
 - Desktop result: timeline stayed in desktop grid layout, Explore button was visible, theme toggle stayed visible, and no failed resources were observed.
+- Production URL: `https://www.bobs-thedev.tech/?v=4b76568`.
+- Production iPhone result: `styles.css?v=20260525-3` loaded, inline Tailwind style block was absent, Explore button was visible with top `720` and bottom `768`, timeline track rendered as `flex` with `column` direction, mobile theme toggle was hidden, and no failed resources were observed.
+- Production smaller-phone result: Explore button was visible with top `541` and bottom `590`, timeline track rendered as `flex` with `column` direction, mobile theme toggle was hidden, and no failed resources were observed.
+- Production desktop result: timeline stayed in grid layout, Explore button was visible, theme toggle stayed visible, and no failed resources were observed.

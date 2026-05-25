@@ -80,3 +80,5 @@
 - Widened the mobile About timeline breakpoint to `900px` so iPhone and narrow browser contexts use the vertical timeline reliably.
 - Raised the mobile Explore button above mobile browser chrome and added smaller-phone hero text spacing rules for short screens.
 - Verified the local portfolio at `http://127.0.0.1:4173` with Puppeteer using `393x852`, `375x667`, and `1440x900` viewports before pushing.
+- Pushed commit `4b76568` to `master`; GitHub Actions `Deploy portfolio` run `26377296800` completed successfully.
+- Verified `https://www.bobs-thedev.tech/?v=4b76568` with Puppeteer: production loaded `styles.css?v=20260525-3`, no inline Tailwind style block remained, mobile timelines rendered vertically, mobile Explore stayed visible, and no failed resources were observed.
