@@ -156,3 +156,16 @@
 - Production iPhone result: `styles.css?v=20260525-3` loaded, inline Tailwind style block was absent, Explore button was visible with top `720` and bottom `768`, timeline track rendered as `flex` with `column` direction, mobile theme toggle was hidden, and no failed resources were observed.
 - Production smaller-phone result: Explore button was visible with top `541` and bottom `590`, timeline track rendered as `flex` with `column` direction, mobile theme toggle was hidden, and no failed resources were observed.
 - Production desktop result: timeline stayed in grid layout, Explore button was visible, theme toggle stayed visible, and no failed resources were observed.
+
+## Portfolio Project Card Recheck
+
+- Date: 2026-05-25.
+- Local static server: `http://127.0.0.1:4173`.
+- Source result: project card summaries were shortened, project cards display one stack-chip row, and hidden stack details are represented by `+1`, `+2`, or `+3` chips.
+- Puppeteer desktop viewport: `1920x1000`.
+- Desktop result: Projects wrapper computed `max-height: none` and `overflow-y: visible`; all four cards rendered at equal height; stack rows stayed at one row; no failed resources were observed.
+- Puppeteer laptop viewport: `1366x768`.
+- Laptop result: Projects wrapper computed `max-height: none` and `overflow-y: visible`; all cards kept equal height and normal page flow instead of a hidden internal section scroll.
+- Puppeteer mobile viewport: `393x852`, mobile emulation enabled.
+- Mobile result: project cards rendered as a single column, stack rows stayed compact, and no failed resources were observed.
+- Modal result: HRMS, AgriSOS, Records, and CML modals still retained full detail with 7, 12, 8, and 12 tech tags respectively; every modal close button remained visible.

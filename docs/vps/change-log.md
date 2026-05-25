@@ -82,3 +82,6 @@
 - Verified the local portfolio at `http://127.0.0.1:4173` with Puppeteer using `393x852`, `375x667`, and `1440x900` viewports before pushing.
 - Pushed commit `4b76568` to `master`; GitHub Actions `Deploy portfolio` run `26377296800` completed successfully.
 - Verified `https://www.bobs-thedev.tech/?v=4b76568` with Puppeteer: production loaded `styles.css?v=20260525-3`, no inline Tailwind style block remained, mobile timelines rendered vertically, mobile Explore stayed visible, and no failed resources were observed.
+- Shortened project card summaries, capped project stack chips to one visible row, and added `+N` overflow chips so full stack details stay in the modal.
+- Removed the desktop `100vh` scroll cap from the Projects section so the project grid uses normal page height instead of cropping lower cards.
+- Verified the project grid locally at `http://127.0.0.1:4173` with Puppeteer using `1920x1000`, `1366x768`, and `393x852` viewports.
