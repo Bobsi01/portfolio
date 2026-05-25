@@ -543,37 +543,25 @@
   </style>
 </head>
 
-<!--
-  ================================================================
-  CONFIGURATION
-  Swap placehold.co image URLs for real screenshots / profile photo.
-  ================================================================
--->
-
 <body class="site-body">
 
-  <!-- SVG symbol library — define once, reference with <use> -->
   <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
     <defs>
-      <!-- External link / arrow-top-right -->
       <symbol id="icon-external" viewBox="0 0 24 24" fill="none">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" stroke="currentColor"
               d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5
                  A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
       </symbol>
-      <!-- Chevron down (scroll indicator) -->
       <symbol id="icon-chevron-down" viewBox="0 0 24 24" fill="none">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor"
               d="m19 9-7 7-7-7"/>
       </symbol>
-      <!-- Sun -->
       <symbol id="icon-sun" viewBox="0 0 24 24" fill="none">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" stroke="currentColor"
               d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591
                  M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636
                  M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0z"/>
       </symbol>
-      <!-- Moon -->
       <symbol id="icon-moon" viewBox="0 0 24 24" fill="none">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" stroke="currentColor"
               d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75
@@ -583,10 +571,8 @@
     </defs>
   </svg>
 
-  <!-- Cursor glow (desktop only) -->
   <div id="cursor-spotlight" class="cursor-spotlight"></div>
 
-  <!-- Section dot navigation -->
   <nav class="side-nav" aria-label="Section navigation">
     <a href="#hero"     aria-label="Hero"></a>
     <a href="#about"    aria-label="About"></a>
@@ -595,13 +581,11 @@
     <a href="#contact"  aria-label="Contact"></a>
   </nav>
 
-  <!-- Dark / Light toggle -->
   <button id="theme-toggle" aria-label="Toggle dark mode" class="darkmode-toggle">
     <svg class="theme-icon-sun"><use href="#icon-sun"/></svg>
     <svg class="theme-icon-moon"><use href="#icon-moon"/></svg>
   </button>
 
-  <!-- ======================= FLOATING NAV ======================= -->
   <header class="floating-header" id="floating-header">
     <nav class="floating-nav" aria-label="Main navigation">
       <a href="#hero"     class="nav-link active">Home</a>
@@ -614,18 +598,14 @@
 
   <main>
 
-    <!-- ======================= HERO ======================= -->
     <section id="hero" class="page-section hero-section hero-background">
 
-      <!-- Floating particles -->
       <canvas id="hero-particles"></canvas>
 
-      <!-- Ambient glow blobs (parallax-driven) -->
       <div class="ambient-orb hero-orb-left"></div>
       <div class="ambient-orb hero-orb-right"></div>
 
-      <!-- Floating 3D tech icons -->
-      <div class="tech-icons" aria-hidden="true">
+        <div class="tech-icons" aria-hidden="true">
         <div class="tech-icon" style="--x:8%;--y:18%;--size:56px;--delay:0s;--dur:14s;--float-y:-14px">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="">
         </div>
@@ -671,18 +651,8 @@
         <div class="tech-icon" style="--x:18%;--y:46%;--size:44px;--delay:5.2s;--dur:18.5s;--float-y:-13px">
           <img src="https://cdn.simpleicons.org/githubcopilot/FFFFFF" alt="">
         </div>
-        <div class="tech-icon" style="--x:72%;--y:15%;--size:42px;--delay:5.8s;--dur:19s;--float-y:-12px">
-          <svg class="tech-icon-svg" viewBox="0 0 64 64" aria-hidden="true">
-            <g fill="none" stroke="currentColor" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M32 10c6.8 0 11.3 4.8 11.3 10.7 0 2.1-.6 4-1.7 5.6"/>
-              <path d="M43 17.8c6 3.4 7.6 9.7 4.7 14.9-1 1.8-2.5 3.3-4.3 4.2"/>
-              <path d="M47.2 33.4c0 6.9-4.7 11.5-10.7 11.5-2.1 0-4-.6-5.6-1.7"/>
-              <path d="M32 54c-6.8 0-11.3-4.8-11.3-10.7 0-2.1.6-4 1.7-5.6"/>
-              <path d="M21 46.2c-6-3.4-7.6-9.7-4.7-14.9 1-1.8 2.5-3.3 4.3-4.2"/>
-              <path d="M16.8 30.6c0-6.9 4.7-11.5 10.7-11.5 2.1 0 4 .6 5.6 1.7"/>
-              <path d="M24 26.4 32 22l8 4.4v11.2L32 42l-8-4.4V26.4z"/>
-            </g>
-          </svg>
+        <div class="tech-icon tech-icon--light" style="--x:72%;--y:15%;--size:42px;--delay:5.8s;--dur:19s;--float-y:-12px">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openai.svg" alt="">
         </div>
         <div class="tech-icon" style="--x:84%;--y:62%;--size:44px;--delay:6.4s;--dur:18s;--float-y:-13px">
           <img src="https://cdn.simpleicons.org/claude/D97757" alt="">
@@ -746,7 +716,6 @@
                    class="profile-photo-img">
             </div>
 
-            <!-- What I'm doing right now -->
             <div class="about-currently-card">
               <p class="section-sublabel section-sublabel--primary">// Currently</p>
               <ul class="currently-list">
@@ -785,7 +754,6 @@
               </p>
             </div>
 
-            <!-- Quick stats -->
             <div class="stats-grid">
               <div class="about-stat">
                 <div class="stat-number stat-number--indigo">5+</div>
@@ -805,7 +773,6 @@
               </div>
             </div>
 
-            <!-- Focus areas -->
             <div>
               <p class="section-sublabel">Interests &amp; Focus Areas</p>
               <div class="tags-row">
@@ -821,7 +788,6 @@
           </div>
         </div>
 
-        <!-- Experience timeline -->
         <div class="about-timeline-wrap" data-reveal style="transition-delay:260ms">
           <p class="section-sublabel">Timeline</p>
           <div class="about-timeline" aria-label="Education and experience milestones from 2023 to 2027">
@@ -841,7 +807,7 @@
                   <p class="timeline-date">MIS Dept. &middot; Sept 2023 &ndash; Present</p>
                 </div>
                 <span class="timeline-dot"></span>
-                <strong class="timeline-year">Sept 2023</strong>
+                <strong class="timeline-year timeline-year--below">Sept 2023</strong>
               </article>
 
               <article class="timeline-milestone timeline-milestone--emerald">
@@ -859,7 +825,7 @@
                   <p class="timeline-date">CML Logistics &middot; Apr &ndash; Jul 2026</p>
                 </div>
                 <span class="timeline-dot"></span>
-                <strong class="timeline-year">2026</strong>
+                <strong class="timeline-year timeline-year--below">2026</strong>
               </article>
 
               <article class="timeline-milestone timeline-milestone--violet">
@@ -898,10 +864,9 @@
                 <h3 class="project-name">HRIS &mdash; HR Management System</h3>
                 <p class="project-type text-indigo-500 dark:text-indigo-400">Enterprise Platform</p>
                 <p class="project-desc">
-                  Modular HRIS with 19 modules &mdash; payroll engine (5000+ lines),
-                  attendance/DTR, leave management, recruitment pipeline, inventory
-                  &amp; POS, performance reviews. Position-based access control, SPA
-                  navigation, PDF exports, and full audit trail. Deployed on Heroku.
+                  Plain PHP HRMS with PostgreSQL, Tailwind, Chart.js dashboards,
+                  FPDF exports, audit logs, secure sessions, and modular HR
+                  workflows for payroll, attendance, recruitment, inventory, and POS.
                 </p>
                 <div class="project-tags">
                   <span class="skill-tag">PHP</span>
@@ -933,19 +898,19 @@
                 <h3 class="project-name">AgriSOS</h3>
                 <p class="project-type text-cyan-500 dark:text-cyan-400">IoT + Mobile + Backend (3-Repo System)</p>
                 <p class="project-desc">
-                  Full-stack IoT agriculture platform across 3 repos. React Native
-                  mobile app with BLE device pairing, plant health scoring, growth
-                  prediction (HuggingFace AI), and gamification. ESP32 firmware
-                  reading 7-in-1 soil sensor (NPK, pH, moisture, temp, conductivity)
-                  via RS485 Modbus. FastAPI backend with 20 API routers on Heroku.
+                  Full-stack IoT agriculture platform with React Native mobile,
+                  React web, FastAPI/Python backend, PostgreSQL, Firebase, Google
+                  authentication, Brevo SMTP, and Arduino tooling for sensor firmware.
                 </p>
                 <div class="project-tags">
                   <span class="skill-tag">React Native</span>
+                  <span class="skill-tag">React Web</span>
                   <span class="skill-tag">FastAPI</span>
-                  <span class="skill-tag">ESP32 / C++</span>
                   <span class="skill-tag">PostgreSQL</span>
-                  <span class="skill-tag">BLE</span>
+                  <span class="skill-tag">NativeWind</span>
                   <span class="skill-tag">Firebase</span>
+                  <span class="skill-tag">Google Auth</span>
+                  <span class="skill-tag">Heroku</span>
                 </div>
                 <button onclick="openProjectModal('agrisos')" class="project-link">
                   View Details
@@ -969,11 +934,9 @@
                 <h3 class="project-name">Student Record Management</h3>
                 <p class="project-type text-slate-500 dark:text-slate-400">Web Application</p>
                 <p class="project-desc">
-                  Laravel 11 university records system with application-based
-                  registration (proof verification by Admin/Officer). Collections
-                  &amp; submissions workflow, alumni tracking, OTP password reset,
-                  encrypted file storage (PostgreSQL BYTEA on Heroku), activity
-                  logging, and Hotwire Turbo SPA navigation.
+                  Laravel 11 student records system using Blade, Tailwind, Alpine,
+                  Turbo navigation, Sanctum sessions, PostgreSQL production storage,
+                  application verification, OTP reset, notifications, and audit logs.
                 </p>
                 <div class="project-tags">
                   <span class="skill-tag">Laravel 11</span>
@@ -982,6 +945,7 @@
                   <span class="skill-tag">PostgreSQL</span>
                   <span class="skill-tag">Tailwind CSS</span>
                   <span class="skill-tag">Sanctum</span>
+                  <span class="skill-tag">Turbo</span>
                 </div>
                 <button onclick="openProjectModal('records')" class="project-link">
                   View Details
@@ -1005,17 +969,17 @@
                 <h3 class="project-name">CML Management System</h3>
                 <p class="project-type text-orange-500 dark:text-orange-400">Enterprise Web App</p>
                 <p class="project-desc">
-                  Scalable employee &amp; logistics management system built with
-                  Laravel 13 + React 19 via Inertia.js. Features real-time
-                  WebSockets (Laravel Reverb), barcode/QR scanning, S3 file
-                  storage, role-based access, and PDF/Excel exports.
+                  Laravel 13 and React 19 management system with Inertia.js,
+                  Tailwind 4, PostgreSQL, Reverb WebSockets, Sanctum, Spatie
+                  permissions, barcode/QR scanning, S3 storage, and PDF/Excel exports.
                 </p>
                 <div class="project-tags">
                   <span class="skill-tag">Laravel 13</span>
                   <span class="skill-tag">React 19</span>
                   <span class="skill-tag">Inertia.js</span>
                   <span class="skill-tag">PostgreSQL</span>
-                  <span class="skill-tag">Redis</span>
+                  <span class="skill-tag">Reverb</span>
+                  <span class="skill-tag">S3</span>
                 </div>
                 <button onclick="openProjectModal('cml')" class="project-link">
                   View Details
@@ -1035,7 +999,6 @@
       <div class="section-inner--wide">
         <h2 class="section-title section-label" data-decorator="// 03" data-reveal>Technical Skills</h2>
 
-        <!-- Core language cards -->
         <div class="skills-grid" data-reveal style="transition-delay:60ms">
 
           <div class="skill-card card group" data-skill-group>
@@ -1043,7 +1006,7 @@
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" class="skill-icon" alt="Python">
               <span class="skill-name">Python</span>
             </div>
-            <span class="skill-detail">FastAPI &middot; SQLAlchemy &middot; Scripting</span>
+            <span class="skill-detail">FastAPI &middot; Algorithms &middot; Scripting</span>
           </div>
 
           <div class="skill-card card group" data-skill-group>
@@ -1051,7 +1014,7 @@
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg" class="skill-icon" alt="JavaScript">
               <span class="skill-name">JavaScript</span>
             </div>
-            <span class="skill-detail">React Native &middot; p5.js &middot; Alpine.js</span>
+            <span class="skill-detail">React &middot; React Native &middot; Alpine.js</span>
           </div>
 
           <div class="skill-card card group" data-skill-group>
@@ -1059,7 +1022,7 @@
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-plain.svg" class="skill-icon" alt="PHP">
               <span class="skill-name">PHP</span>
             </div>
-            <span class="skill-detail">Laravel 11 &middot; Blade &middot; Plain PHP</span>
+            <span class="skill-detail">Laravel 11/13 &middot; Blade &middot; PDO</span>
           </div>
 
           <div class="skill-card card group" data-skill-group>
@@ -1067,7 +1030,7 @@
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" class="skill-icon" alt="React">
               <span class="skill-name">React</span>
             </div>
-            <span class="skill-detail">React Native &middot; Expo &middot; NativeWind</span>
+            <span class="skill-detail">React 19 &middot; Inertia.js &middot; NativeWind</span>
           </div>
 
           <div class="skill-card card group" data-skill-group>
@@ -1075,7 +1038,7 @@
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" class="skill-icon" alt="PostgreSQL">
               <span class="skill-name">SQL</span>
             </div>
-            <span class="skill-detail">PostgreSQL &middot; MySQL &middot; Schema Design</span>
+            <span class="skill-detail">PostgreSQL &middot; MySQL &middot; BYTEA storage</span>
           </div>
 
           <div class="skill-card card group" data-skill-group>
@@ -1083,12 +1046,11 @@
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" class="skill-icon" alt="C++">
               <span class="skill-name">C / C++ / Java</span>
             </div>
-            <span class="skill-detail">ESP32 Firmware &middot; Arduino &middot; OOP</span>
+            <span class="skill-detail">ESP32 &middot; Arduino CLI &middot; OOP</span>
           </div>
 
         </div>
 
-        <!-- Tool & workflow pill groups -->
         <div class="pill-groups">
 
           <div class="card pill-group-card" data-reveal data-skill-group style="transition-delay:80ms">
@@ -1099,12 +1061,17 @@
             <div class="tags-row">
               <span class="skill-tag skill-tag-hoverable skill-tag-reveal">Git / GitHub</span>
               <span class="skill-tag skill-tag-hoverable skill-tag-reveal">Heroku</span>
+              <span class="skill-tag skill-tag-hoverable skill-tag-reveal">DigitalOcean</span>
+              <span class="skill-tag skill-tag-hoverable skill-tag-reveal">Docker</span>
               <span class="skill-tag skill-tag-hoverable skill-tag-reveal">Firebase</span>
               <span class="skill-tag skill-tag-hoverable skill-tag-reveal">Brevo SMTP</span>
               <span class="skill-tag skill-tag-hoverable skill-tag-reveal">Arduino IDE</span>
+              <span class="skill-tag skill-tag-hoverable skill-tag-reveal">Arduino CLI</span>
+              <span class="skill-tag skill-tag-hoverable skill-tag-reveal">ChatGPT / OpenAI</span>
               <span class="skill-tag skill-tag-hoverable skill-tag-reveal">GitHub Copilot</span>
               <span class="skill-tag skill-tag-hoverable skill-tag-reveal">Tailwind CSS</span>
-              <span class="skill-tag skill-tag-hoverable skill-tag-reveal">Expo / EAS</span>
+              <span class="skill-tag skill-tag-hoverable skill-tag-reveal">NativeWind</span>
+              <span class="skill-tag skill-tag-hoverable skill-tag-reveal">AWS S3</span>
             </div>
           </div>
 
@@ -1116,17 +1083,18 @@
             <div class="tags-row">
               <span class="skill-tag skill-tag-hoverable skill-tag-reveal">REST API Design</span>
               <span class="skill-tag skill-tag-hoverable skill-tag-reveal">Schema Design</span>
-              <span class="skill-tag skill-tag-hoverable skill-tag-reveal">Agile / Scrum</span>
+              <span class="skill-tag skill-tag-hoverable skill-tag-reveal">RBAC</span>
+              <span class="skill-tag skill-tag-hoverable skill-tag-reveal">Realtime Features</span>
               <span class="skill-tag skill-tag-hoverable skill-tag-reveal">Unit Testing</span>
               <span class="skill-tag skill-tag-hoverable skill-tag-reveal">Code Review</span>
               <span class="skill-tag skill-tag-hoverable skill-tag-reveal">Technical Docs</span>
               <span class="skill-tag skill-tag-hoverable skill-tag-reveal">BLE / IoT</span>
+              <span class="skill-tag skill-tag-hoverable skill-tag-reveal">Security Checks</span>
             </div>
           </div>
 
         </div>
 
-        <!-- Code snippet easter egg -->
         <div class="code-window" data-reveal style="transition-delay:200ms">
           <div class="code-window-bar">
             <span class="window-dot bg-red-400"></span>
@@ -1136,13 +1104,13 @@
           </div>
           <pre class="code-snippet"><code><span class="code-keyword">class</span> <span class="code-classname">Developer</span>:
     name      = <span class="code-string">"Daniel D. Bobis"</span>
-    role      = <span class="code-string">"Full-Stack Developer"</span>
+    role      = <span class="code-string">"Software Developer Intern"</span>
     education = <span class="code-string">"BS Computer Science (3rd Year)"</span>
-    stack     = [<span class="code-string">"Python"</span>, <span class="code-string">"JS"</span>, <span class="code-string">"PHP"</span>, <span class="code-string">"C++"</span>, <span class="code-string">"Java"</span>]
-    projects  = [<span class="code-string">"AgriSOS"</span>, <span class="code-string">"HRIS"</span>, <span class="code-string">"RMS"</span>, <span class="code-string">"Path Weaver"</span>]
+    stack     = [<span class="code-string">"Laravel"</span>, <span class="code-string">"React"</span>, <span class="code-string">"FastAPI"</span>, <span class="code-string">"PostgreSQL"</span>, <span class="code-string">"IoT"</span>]
+    projects  = [<span class="code-string">"CML"</span>, <span class="code-string">"AgriSOS"</span>, <span class="code-string">"Ourchive"</span>, <span class="code-string">"HRMS"</span>]
 
     <span class="code-keyword">def</span> <span class="code-function">build</span>(self, idea):
-        <span class="code-comment"># ship it, learn, iterate</span>
+        <span class="code-comment"># build, test, deploy, improve</span>
         <span class="code-keyword">return</span> Production(idea).deploy()</code></pre>
         </div>
 

@@ -1,13 +1,7 @@
-/* ================================================================
-   Portfolio Script — clean, deduped, with working project modal
-   ================================================================ */
-
 (function () {
 
-  /* ── Reduced motion preference ──────────────────────────────── */
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ── Theme toggle ───────────────────────────────────────────── */
   var toggle = document.getElementById('theme-toggle');
   var root   = document.documentElement;
 
@@ -23,7 +17,6 @@
     });
   }
 
-  /* ── Cursor glow (desktop only) ─────────────────────────────── */
   var glow = document.getElementById('cursor-spotlight');
   if (glow && !prefersReducedMotion && window.innerWidth > 768) {
     document.addEventListener('mousemove', function (e) {
@@ -36,7 +29,6 @@
     });
   }
 
-  /* ── Hero particles ─────────────────────────────────────────── */
   var canvas = document.getElementById('hero-particles');
   if (canvas && !prefersReducedMotion) {
     var ctx       = canvas.getContext('2d');
@@ -87,7 +79,6 @@
     window.addEventListener('resize', function () { resizeCanvas(); initParticles(); });
   }
 
-  /* ── Hero blob parallax ─────────────────────────────────────── */
   var heroSection = document.getElementById('hero');
   var blobs = document.querySelectorAll('.ambient-orb');
   if (heroSection && blobs.length && !prefersReducedMotion) {
@@ -100,7 +91,6 @@
     });
   }
 
-  /* ── Typing effect ──────────────────────────────────────────── */
   var typingEl = document.getElementById('hero-typed');
   if (typingEl && !prefersReducedMotion) {
     var phrases     = ['Full-Stack Developer','IoT Systems Builder','CS Student & Maker','Clean Code Advocate'];
@@ -127,7 +117,6 @@
     typingEl.textContent = 'Full-Stack Developer';
   }
 
-  /* ── Scroll reveal ──────────────────────────────────────────── */
   var reveals = document.querySelectorAll('[data-reveal]');
   if ('IntersectionObserver' in window && !prefersReducedMotion) {
     var revealObserver = new IntersectionObserver(function (entries) {
@@ -140,7 +129,6 @@
     reveals.forEach(function (el) { el.classList.add('in-view'); });
   }
 
-  /* ── Skill pill staggered entrance ─────────────────────────── */
   var skillSections = document.querySelectorAll('[data-skill-group]');
   if ('IntersectionObserver' in window && !prefersReducedMotion) {
     var pillObserver = new IntersectionObserver(function (entries) {
@@ -156,7 +144,6 @@
     document.querySelectorAll('.skill-tag-reveal').forEach(function (p) { p.classList.add('is-visible'); });
   }
 
-  /* ── 3-D card tilt ──────────────────────────────────────────── */
   var tiltCards = document.querySelectorAll('.project-card');
   if (!prefersReducedMotion) {
     tiltCards.forEach(function (card) {
@@ -180,7 +167,6 @@
     });
   }
 
-  /* ── Section dot + floating nav (active tracking) ───────────── */
   var dotLinks  = document.querySelectorAll('.side-nav a');
   var floatLinks = document.querySelectorAll('.floating-nav .nav-link');
   var sectionsList = [];
@@ -203,19 +189,14 @@
     sectionsList.forEach(function (s) { sectionObserver.observe(s.el); });
   }
 
-})(); /* ── end IIFE ── */
-
-
-/* ================================================================
-   PROJECT MODAL
-   ================================================================ */
+})();
 
 var projectsData = {
   hrms: {
     title:    'HRIS — HR Management System',
     type:     'Enterprise Platform',
-    desc:     'A production-grade modular HR platform with 19 fully functional modules. Built to handle real organizational workflows — payroll computation, attendance tracking, recruitment pipelines, inventory management — all with position-based access control.',
-    tags:     ['PHP', 'PostgreSQL', 'Tailwind CSS', 'Chart.js', 'FPDF', 'Heroku'],
+    desc:     'A modular HRMS built with plain PHP, PDO, PostgreSQL, and Tailwind. It handles payroll, attendance, recruitment, inventory/POS, reporting, backups, audit logs, secure sessions, and role-based access.',
+    tags:     ['PHP', 'PDO', 'PostgreSQL', 'Tailwind CSS', 'Chart.js', 'FPDF', 'Heroku'],
     features: [
       '5,000+ line payroll engine with deductions & bonuses',
       'Automated DTR & leave management system',
@@ -233,15 +214,17 @@ var projectsData = {
   agrisos: {
     title:    'AgriSOS',
     type:     'IoT + Mobile + Backend',
-    desc:     'A full-stack smart agriculture platform across 3 repos. ESP32 firmware reads a 7-in-1 soil sensor via RS485 Modbus, synced to a FastAPI backend and a React Native app with BLE pairing, AI growth prediction, and gamification.',
-    tags:     ['React Native', 'FastAPI', 'ESP32 / C++', 'PostgreSQL', 'BLE', 'Firebase', 'HuggingFace'],
+    desc:     'A smart agriculture platform with React Native mobile, React web, FastAPI/Python backend, PostgreSQL, Firebase, Google authentication, Brevo SMTP, Heroku hosting, and Arduino IDE/CLI firmware tooling.',
+    tags:     ['React Native', 'React Web', 'NativeWind', 'FastAPI', 'Python', 'PostgreSQL', 'Firebase', 'Google Auth', 'Brevo SMTP', 'Heroku', 'Arduino IDE', 'Arduino CLI'],
     features: [
-      'BLE device pairing for ESP32 soil sensor',
+      'BLE device pairing for Arduino/ESP32 soil sensor',
       'Real-time NPK, pH, moisture & temperature readings',
-      'AI growth prediction via HuggingFace inference',
+      'FastAPI/Python backend for algorithms and API routing',
       'Plant health scoring & gamification system',
-      'FastAPI backend with 20+ API routers on Heroku',
-      'Firebase push notifications & authentication',
+      'React Native mobile UI with NativeWind styling',
+      'React web dashboard with Tailwind CSS',
+      'Firebase and Google authentication',
+      'Brevo SMTP email delivery on Heroku',
     ],
     liveLink: 'https://www.agrisos.app/',
     github:   'https://github.com/Bobsi01',
@@ -251,15 +234,15 @@ var projectsData = {
   records: {
     title:    'Student Record Management',
     type:     'Web Application',
-    desc:     'Laravel 11 university records system (Ourchive) with application-based registration, proof verification by Admin/Officer, and encrypted file storage. SPA navigation via Hotwire Turbo with rigorous access-control layers.',
-    tags:     ['Laravel 11', 'Blade', 'Alpine.js', 'PostgreSQL', 'Tailwind CSS', 'Sanctum'],
+    desc:     'A Laravel 11 student records system with Blade, Tailwind, Alpine, Turbo navigation, Sanctum session auth, PostgreSQL production storage, document verification, OTP reset, notifications, and audit logging.',
+    tags:     ['Laravel 11', 'PHP 8.2', 'Blade', 'Alpine.js', 'Turbo', 'PostgreSQL', 'Tailwind CSS', 'Sanctum'],
     features: [
       'Application-based registration with document verification',
       'Collections & submissions workflow engine',
       'Alumni tracking & record retrieval portal',
       'OTP password reset via Brevo SMTP',
       'Encrypted file storage using PostgreSQL BYTEA',
-      'Hotwire Turbo SPA navigation & activity log',
+      'Hotwire Turbo navigation & activity log',
     ],
     liveLink: 'https://records.bobs-thedev.tech',
     github:   'https://github.com/Bobsi01',
@@ -270,14 +253,14 @@ var projectsData = {
   cml: {
     title:    'CML Management System',
     type:     'Enterprise Web App',
-    desc:     'A scalable, containerized full-stack management platform built with Laravel 13 and React 19 via Inertia.js. Handles employee management, logistics, and warehouse operations. Features real-time WebSocket updates (Laravel Reverb), role-based access (Spatie), barcode/QR scanning, S3 file storage, PDF/Excel exports, and is Dockerized for consistent deployments on DigitalOcean.',
-    tags:     ['Laravel 13', 'React 19', 'Inertia.js', 'PostgreSQL', 'Redis', 'Docker', 'AWS S3', 'Reverb', 'DOMpdf'],
+    desc:     'A Laravel 13 and React 19 management system using Inertia.js, Tailwind 4, PostgreSQL, Reverb WebSockets, Sanctum, Spatie permissions, S3 storage, barcode/QR tools, DOMpdf, Maatwebsite Excel, and DigitalOcean deployment.',
+    tags:     ['Laravel 13', 'PHP 8.4', 'React 19', 'Inertia.js', 'Tailwind 4', 'PostgreSQL', 'Reverb', 'Sanctum', 'Spatie', 'AWS S3', 'DOMpdf', 'Excel'],
     features: [
       'Real-time updates via Laravel Reverb WebSockets',
-      'Dockerized with multi-stage builds for DigitalOcean deployment',
+      'DigitalOcean deployment with Docker build support',
       'Role & permission system with Spatie Laravel Permission',
       'Barcode & QR code generation and scanning',
-      'PDF/Excel export engine (DOMpdf + Maatwebsite Excel)',
+      'PDF/Excel export engine with DOMpdf and Maatwebsite Excel',
       'S3-backed file storage with league/flysystem',
       'Full audit trail via Spatie Activity Log',
       'Redis-powered queues, cache & sessions',
@@ -289,25 +272,36 @@ var projectsData = {
   },
 };
 
-/* ── Tech-icon lookup (devicon class or simpleicons img URL) ── */
 var techIcons = {
   'PHP':            { t: 'i',   v: 'devicon-php-plain colored' },
+  'PHP 8.2':        { t: 'i',   v: 'devicon-php-plain colored' },
+  'PHP 8.4':        { t: 'i',   v: 'devicon-php-plain colored' },
+  'PDO':            { t: 'i',   v: 'devicon-php-plain colored' },
+  'Python':         { t: 'i',   v: 'devicon-python-plain colored' },
   'PostgreSQL':     { t: 'i',   v: 'devicon-postgresql-plain colored' },
   'Tailwind CSS':   { t: 'i',   v: 'devicon-tailwindcss-plain colored' },
+  'Tailwind 4':     { t: 'i',   v: 'devicon-tailwindcss-plain colored' },
   'Chart.js':       { t: 'img', v: 'https://cdn.simpleicons.org/chartdotjs/FF6384' },
   'FPDF':           { t: 'i',   v: 'devicon-php-plain colored' },
   'Heroku':         { t: 'i',   v: 'devicon-heroku-original colored' },
   'React Native':   { t: 'i',   v: 'devicon-react-original colored' },
+  'React Web':      { t: 'i',   v: 'devicon-react-original colored' },
+  'NativeWind':     { t: 'i',   v: 'devicon-tailwindcss-plain colored' },
   'FastAPI':        { t: 'i',   v: 'devicon-fastapi-plain colored' },
   'ESP32 / C++':    { t: 'i',   v: 'devicon-cplusplus-plain colored' },
   'BLE':            { t: 'img', v: 'https://cdn.simpleicons.org/bluetooth/0082FC' },
   'Firebase':       { t: 'i',   v: 'devicon-firebase-plain colored' },
+  'Google Auth':    { t: 'img', v: 'https://cdn.simpleicons.org/google/4285F4' },
+  'Brevo SMTP':     { t: 'img', v: 'https://cdn.simpleicons.org/maildotru/005FF9' },
+  'Arduino IDE':    { t: 'i',   v: 'devicon-arduino-plain colored' },
+  'Arduino CLI':    { t: 'i',   v: 'devicon-arduino-plain colored' },
   'HuggingFace':    { t: 'img', v: 'https://cdn.simpleicons.org/huggingface/FFD21E' },
   'Docker':         { t: 'i',   v: 'devicon-docker-plain colored' },
   'Laravel 11':     { t: 'i',   v: 'devicon-laravel-plain colored' },
   'Laravel 13':     { t: 'i',   v: 'devicon-laravel-plain colored' },
   'Blade':          { t: 'i',   v: 'devicon-laravel-plain colored' },
   'Alpine.js':      { t: 'img', v: 'https://cdn.simpleicons.org/alpinedotjs/8BC0D0' },
+  'Turbo':          { t: 'img', v: 'https://cdn.simpleicons.org/turbo/5CD8E5' },
   'Sanctum':        { t: 'i',   v: 'devicon-laravel-plain colored' },
   'React 19':       { t: 'i',   v: 'devicon-react-original colored' },
   'Inertia.js':     { t: 'img', v: 'https://cdn.simpleicons.org/inertia/9553E9' },
@@ -320,13 +314,13 @@ var techIcons = {
   'Reverb':         { t: 'i',   v: 'devicon-laravel-plain colored' },
   'Spatie':         { t: 'i',   v: 'devicon-laravel-plain colored' },
   'DOMpdf':         { t: 'i',   v: 'devicon-php-plain colored' },
+  'Excel':          { t: 'img', v: 'https://cdn.simpleicons.org/googlesheets/34A853' },
   'JavaScript':     { t: 'i',   v: 'devicon-javascript-plain colored' },
   'p5.js':          { t: 'img', v: 'https://cdn.simpleicons.org/p5dotjs/ED225D' },
   'Canvas API':     { t: 'i',   v: 'devicon-html5-plain colored' },
   'OOP':            { t: 'i',   v: 'devicon-javascript-plain colored' },
   'Game Design':    { t: 'img', v: 'https://cdn.simpleicons.org/unity/222222' },
   'Physics Engine': { t: 'img', v: 'https://cdn.simpleicons.org/nvidia/76B900' },
-  'Sanctum':        { t: 'i',   v: 'devicon-laravel-plain colored' },
 };
 
 var ICON_SIZE = '14px';
@@ -361,7 +355,6 @@ function openProjectModal(id) {
   var data  = projectsData[id];
   if (!data) return;
 
-  /* ── LEFT pane ── */
   var previewStack = document.getElementById('modal-preview-stack');
   if (previewStack) {
     previewStack.innerHTML = '';
@@ -392,10 +385,8 @@ function openProjectModal(id) {
   }
   document.getElementById('modal-title').textContent = data.title;
 
-  /* Right pane */
   document.getElementById('modal-desc').textContent = data.desc;
 
-  /* tech-stack tags */
   var tagsEl = document.getElementById('modal-tags');
   tagsEl.innerHTML = '';
   data.tags.forEach(function (tag) {
@@ -407,7 +398,6 @@ function openProjectModal(id) {
     tagsEl.appendChild(s);
   });
 
-  /* key features */
   var featEl = document.getElementById('modal-features');
   featEl.innerHTML = '';
   (data.features || []).forEach(function (feat) {
@@ -417,11 +407,9 @@ function openProjectModal(id) {
     featEl.appendChild(d);
   });
 
-  /* CTAs */
   var liveLink = document.getElementById('modal-live-link');
   if (liveLink) liveLink.href = data.liveLink;
 
-  /* ── show ── */
   var modal = document.getElementById('project-modal');
   var card  = document.getElementById('modal-inner');
   if (!modal || !card) return;
@@ -454,7 +442,6 @@ function closeProjectModal() {
   }, 360);
 }
 
-/* close on backdrop click */
 var modalEl = document.getElementById('project-modal');
 if (modalEl) {
   modalEl.addEventListener('click', function (e) {
@@ -462,11 +449,9 @@ if (modalEl) {
   });
 }
 
-/* close on Escape */
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') closeProjectModal();
 });
 
-/* expose to onclick attributes */
 window.openProjectModal  = openProjectModal;
 window.closeProjectModal = closeProjectModal;

@@ -66,3 +66,11 @@
 - Verified the updated mobile layout locally at `http://127.0.0.1:4173` with Puppeteer using a `393x852` mobile viewport and a `1366x768` desktop viewport.
 - Pushed commit `49d7e8e` to `master`; GitHub Actions `Deploy portfolio` run `26364775244` completed successfully.
 - Verified `https://www.bobs-thedev.tech/?v=49d7e8e` with Puppeteer using a `393x852` mobile viewport: Explore button visible, timeline vertical with no overlaps, modal close button reachable, and fixed theme toggle hidden.
+
+## 2026-05-25
+
+- Reviewed local project folders `C:\Workspace\cml-management-system`, `C:\Workspace\Records-management`, and `C:\Workspace\hrms-sysfunda` to align portfolio stacks with actual manifests and READMEs.
+- Updated portfolio project cards, project modals, technical skills, tools/devops, workflow/methodology, and `daniel.py` content to reflect CML, Records, HRMS, and AgriSOS stacks.
+- Fixed the floating OpenAI/ChatGPT-style hero icon by replacing the broken custom icon with a hosted OpenAI SVG and verified there were no icon 404s locally.
+- Re-enabled all floating hero tech icons on mobile at smaller sizes and positioned them outside the main hero text area.
+- Moved the desktop timeline dates for Student Assistant and CML Developer Intern below the timeline rail.

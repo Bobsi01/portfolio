@@ -123,3 +123,16 @@
 - Desktop result: theme toggle stayed visible on the base page, timeline stayed in grid layout, and the toggle was hidden while the modal was open.
 - Production URL: `https://www.bobs-thedev.tech/?v=49d7e8e`.
 - Production mobile result: Explore button was visible with top `778` and bottom `826`; mobile theme toggle was hidden; timeline track rendered as `flex` with no overlaps; CML modal close button was reachable; no failed page resources were observed.
+
+## Portfolio Stack Content Recheck
+
+- Date: 2026-05-25.
+- Local static server: `http://127.0.0.1:4173`.
+- Source folders reviewed:
+  - `C:\Workspace\cml-management-system`
+  - `C:\Workspace\Records-management`
+  - `C:\Workspace\hrms-sysfunda`
+- Puppeteer mobile viewport: `393x852`, mobile emulation enabled.
+- Mobile hero result: 18 floating icons visible, maximum icon width `22`, no overlap with hero content, mobile theme toggle hidden, and the OpenAI icon loaded from `openai.svg`.
+- Modal result: HRMS, AgriSOS, Records, and CML tech-stack tags matched the updated content; no icon or page resource failures were observed after replacing the Excel icon URL.
+- Desktop timeline result: `Sept 2023` and `2026` timeline dates now render below the timeline rail.
