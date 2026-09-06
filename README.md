@@ -21,13 +21,9 @@ README.md    → This file
 
 Production deploys are handled by GitHub Actions and GitHub Pages. Every push to `master` that changes the public portfolio files runs `.github/workflows/deploy-portfolio.yml`, packages only the public static site files, and deploys them to the repository's `github-pages` environment.
 
-The intended custom domain is:
+The portfolio is hosted at https://bobsi01.github.io/portfolio/.
 
-```
-www.bobs-thedev.tech
-```
-
-GitHub Pages must be enabled in **Settings → Pages** with **Source: GitHub Actions**, and the custom domain must be configured there. DNS for `www` should point to `Bobsi01.github.io`. The apex domain may also be configured to redirect to `www` through the GitHub Pages custom-domain setup and DNS provider.
+GitHub Pages uses **Settings → Pages → Source: GitHub Actions**. Leave the custom domain unset so the portfolio stays on GitHub Pages. Canonical and social preview URLs use this GitHub Pages address.
 
 The VPS documentation under `docs/vps/` is retained for the other services and for historical deployment reference, but the portfolio itself no longer requires the VPS after the GitHub Pages cutover is complete.
 

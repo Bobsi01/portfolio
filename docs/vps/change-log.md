@@ -96,3 +96,11 @@
 - Verified the local metadata at `http://127.0.0.1:4173`: OG/Twitter image tags pointed to the `v2` PNG, it loaded at `1200x630`, and no failed resources were observed.
 - Pushed commit `2b99288` to `master`; GitHub Actions `Deploy portfolio` run `26377983392` completed successfully.
 - Verified `https://www.bobs-thedev.tech/?v=2b99288` with Puppeteer: production OG/Twitter metadata pointed to `assets/share-preview-20260525-v2.png`, the image returned `200`, loaded at `1200x630`, and no failed resources were observed.
+
+## 2026-09-06 - GitHub Pages URL cleanup
+
+- Updated canonical and social preview URLs to https://bobsi01.github.io/portfolio/ and removed the obsolete sitemap directive pointing to the old homepage.
+- Changed GitHub Pages publishing from legacy branch builds to the existing GitHub Actions workflow using GitHub CLI. Custom domain remains unset.
+- Preserved portfolio content, project links, assets, and VPS history. No VPS or DNS changes were made.
+- Verified local HTML asset references and git diff whitespace checks before deployment. The deployed commit is the commit containing this entry.
+
