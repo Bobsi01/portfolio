@@ -1,4 +1,4 @@
-name: Deploy portfolio
+name: Deploy portfolio to GitHub Pages
 
 on:
   push:
@@ -17,72 +17,50 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: portfolio-production
+  group: github-pages
   cancel-in-progress: true
 
 permissions:
   contents: read
+  pages: write
+  id-token: write
 
 jobs:
   deploy:
-    name: Sync static site
-    runs-on:
-      - self-hosted
-      - linux
-      - portfolio-vps
-    timeout-minutes: 10
-
-    env:
-      PORTFOLIO_ROOT: /home/portfolio/htdocs/www.bobs-thedev.tech
+    name: Deploy static portfolio
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
-      - name: Verify runner tools
-        shell: bash
-        run: |
-          set -euo pipefail
-          command -v rsync >/dev/null
-          command -v sudo >/dev/null
-          command -v curl >/dev/null
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
 
       - name: Prepare deploy payload
         shell: bash
         run: |
           set -euo pipefail
-          rm -rf .deploy-portfolio
-          mkdir -p .deploy-portfolio
+          rm -rf .deploy-pages
+          mkdir -p .deploy-pages
 
-          rsync -a --relative \
-            index.html \
-            styles.css \
-            script.js \
-            robots.txt \
-            favicon.png \
-            assets/ \
-            images/ \
-            .deploy-portfolio/
+          cp index.html styles.css script.js robots.txt favicon.png .deploy-pages/
+          cp -R assets images .deploy-pages/
 
           if [ -f favicon.ico ]; then
-            cp favicon.ico .deploy-portfolio/favicon.ico
+            cp favicon.ico .deploy-pages/favicon.ico
           else
-            cp favicon.png .deploy-portfolio/favicon.ico
+            cp favicon.png .deploy-pages/favicon.ico
           fi
 
-      - name: Publish portfolio files
-        shell: bash
-        run: |
-          set -euo pipefail
-          sudo mkdir -p "$PORTFOLIO_ROOT"
-          sudo rsync -a --delete --exclude='.well-known/' .deploy-portfolio/ "$PORTFOLIO_ROOT/"
-          sudo chown -R portfolio:portfolio "$PORTFOLIO_ROOT"
-          sudo find "$PORTFOLIO_ROOT" -type d -exec chmod 755 {} +
-          sudo find "$PORTFOLIO_ROOT" -type f -exec chmod 644 {} +
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: .deploy-pages
 
-      - name: Verify Nginx and public site
-        shell: bash
-        run: |
-          set -euo pipefail
-          sudo nginx -t
-          curl -fsS --max-time 20 https://www.bobs-thedev.tech/ >/dev/null
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
