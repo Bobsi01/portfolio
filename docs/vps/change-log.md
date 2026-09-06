@@ -103,4 +103,3 @@
 - Changed GitHub Pages publishing from legacy branch builds to the existing GitHub Actions workflow using GitHub CLI. Custom domain remains unset.
 - Preserved portfolio content, project links, assets, and VPS history. No VPS or DNS changes were made.
 - Verified local HTML asset references and git diff whitespace checks before deployment. The deployed commit is the commit containing this entry.
-
