@@ -19,13 +19,17 @@ README.md    → This file
 
 ## Deploying to Production
 
-Production deploys are handled by GitHub Actions. Every push to `master` that changes the public portfolio files runs `.github/workflows/deploy-portfolio.yml` on the VPS self-hosted runner and syncs the static site to:
+Production deploys are handled by GitHub Actions and GitHub Pages. Every push to `master` that changes the public portfolio files runs `.github/workflows/deploy-portfolio.yml`, packages only the public static site files, and deploys them to the repository's `github-pages` environment.
+
+The intended custom domain is:
 
 ```
-/home/portfolio/htdocs/www.bobs-thedev.tech
+www.bobs-thedev.tech
 ```
 
-See `docs/vps/github-actions-deployment.md` for the one-time runner setup and verification steps.
+GitHub Pages must be enabled in **Settings → Pages** with **Source: GitHub Actions**, and the custom domain must be configured there. DNS for `www` should point to `Bobsi01.github.io`. The apex domain may also be configured to redirect to `www` through the GitHub Pages custom-domain setup and DNS provider.
+
+The VPS documentation under `docs/vps/` is retained for the other services and for historical deployment reference, but the portfolio itself no longer requires the VPS after the GitHub Pages cutover is complete.
 
 ## Editing Content
 
