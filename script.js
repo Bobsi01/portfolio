@@ -1,6 +1,9 @@
 (function () {
 
-  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var prefersReducedMotion = motionQuery.matches;
+  var pointerQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+  motionQuery.addEventListener('change', function () { prefersReducedMotion = motionQuery.matches; });
 
   var toggle = document.getElementById('theme-toggle');
   var root   = document.documentElement;
@@ -10,110 +13,139 @@
     root.classList.add('dark');
   }
 
-  if (toggle) {
-    toggle.addEventListener('click', function () {
+  var mobileToggle = document.getElementById('mobile-theme-toggle');
+  function syncTheme() {
+    [toggle, mobileToggle].forEach(function (button) {
+      if (button) button.setAttribute('aria-pressed', String(root.classList.contains('dark')));
+    });
+  }
+  [toggle, mobileToggle].forEach(function (button) {
+    if (button) button.addEventListener('click', function () {
       root.classList.toggle('dark');
       localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+      syncTheme();
     });
+  });
+  syncTheme();
+  var header = document.getElementById('floating-header');
+  var menuButton = document.getElementById('mobile-menu-button');
+  function closeMenu() {
+    header.classList.remove('menu-open');
+    menuButton.setAttribute('aria-expanded', 'false');
   }
-
-  var glow = document.getElementById('cursor-spotlight');
-  if (glow && !prefersReducedMotion && window.innerWidth > 768) {
-    document.addEventListener('mousemove', function (e) {
-      glow.style.left = e.clientX + 'px';
-      glow.style.top  = e.clientY + 'px';
-      if (!glow.classList.contains('visible')) glow.classList.add('visible');
-    });
-    document.addEventListener('mouseleave', function () {
-      glow.classList.remove('visible');
-    });
-  }
-
-  var canvas = document.getElementById('hero-particles');
-  if (canvas && !prefersReducedMotion) {
-    var ctx       = canvas.getContext('2d');
-    var particles = [];
-    var PARTICLE_COUNT = 40;
-
-    function resizeCanvas() {
-      var hero = canvas.parentElement;
-      canvas.width  = hero.offsetWidth;
-      canvas.height = hero.offsetHeight;
-    }
-
-    function createParticle() {
-      return {
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: Math.random() * 1.8 + 0.6,
-        dx: (Math.random() - 0.5) * 0.3,
-        dy: (Math.random() - 0.5) * 0.3,
-        opacity: Math.random() * 0.4 + 0.1,
-      };
-    }
-
-    function initParticles() {
-      particles = [];
-      for (var i = 0; i < PARTICLE_COUNT; i++) particles.push(createParticle());
-    }
-
-    function drawParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (var i = 0; i < particles.length; i++) {
-        var p = particles[i];
-        p.x += p.dx;
-        p.y += p.dy;
-        if (p.x < 0 || p.x > canvas.width)  p.dx *= -1;
-        if (p.y < 0 || p.y > canvas.height)  p.dy *= -1;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(255,255,255,' + p.opacity + ')';
-        ctx.fill();
-      }
-      requestAnimationFrame(drawParticles);
-    }
-
-    resizeCanvas();
-    initParticles();
-    drawParticles();
-    window.addEventListener('resize', function () { resizeCanvas(); initParticles(); });
-  }
-
-  /* ---- Layer 3: Animation watchdog ----------------------------------------
-   * Restarts .tech-icon animations if they stalled due to:
-   *   - Tab being backgrounded during page load (Chrome/Edge throttle)
-   *   - GPU compositor freezing the first painted frame
-   * Strategy: toggle animation-name to '' then back (forces reflow + restart).
-   * -----------------------------------------------------------------------*/
-  function restartIconAnimations() {
-    var icons = document.querySelectorAll('.tech-icon');
-    if (!icons.length || prefersReducedMotion) return;
-    icons.forEach(function (el) {
-      el.style.animationName = 'none';
-      el.offsetHeight; // trigger reflow
-      el.style.animationName = '';
-    });
-  }
-
-  // Restart when a backgrounded tab regains focus
-  document.addEventListener('visibilitychange', function () {
-    if (!document.hidden) restartIconAnimations();
+  menuButton.addEventListener('click', function () {
+    var open = header.classList.toggle('menu-open');
+    menuButton.setAttribute('aria-expanded', String(open));
+  });
+  header.querySelectorAll('a').forEach(function (link) { link.addEventListener('click', closeMenu); });
+  document.addEventListener('click', function (event) { if (!header.contains(event.target)) closeMenu(); });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && header.classList.contains('menu-open')) { closeMenu(); menuButton.focus(); }
+  });
+  window.matchMedia('(min-width: 768px)').addEventListener('change', function () {
+    if (header.contains(document.activeElement)) menuButton.blur();
+    closeMenu();
   });
 
-  // One-time health-check: fires after the longest delay (7s) + 2s buffer
-  setTimeout(restartIconAnimations, 9000);
-
   var heroSection = document.getElementById('hero');
-  var blobs = document.querySelectorAll('.ambient-orb');
-  if (heroSection && blobs.length && !prefersReducedMotion) {
-    heroSection.addEventListener('mousemove', function (e) {
-      var rect = heroSection.getBoundingClientRect();
-      var cx = (e.clientX - rect.left) / rect.width  - 0.5;
-      var cy = (e.clientY - rect.top)  / rect.height - 0.5;
-      blobs[0].style.transform = 'translate(' + (cx * 30) + 'px,' + (cy * 25) + 'px)';
-      if (blobs[1]) blobs[1].style.transform = 'translate(' + (cx * -20) + 'px,' + (cy * -30) + 'px)';
+  var canvas = document.getElementById('hero-particles');
+  var ctx = canvas.getContext('2d');
+  var icons = Array.from(heroSection.querySelectorAll('.tech-icons > .tech-icon'));
+  var blobs = heroSection.querySelectorAll('.ambient-orb');
+  var particles = [], frame = null, pointerFrame = null, resizeTimer;
+  var heroVisible = true, active = false, canvasWidth = 0, canvasHeight = 0;
+  var previousTime = 0, pointer = null;
+  function effectsAllowed() {
+    return heroVisible && !document.hidden && !motionQuery.matches && !document.body.classList.contains('modal-open');
+  }
+  function drawParticles(time) {
+    frame = null;
+    if (!active || !ctx) return;
+    var step = previousTime ? Math.min((time - previousTime) / 16.67, 2) : 1;
+    previousTime = time;
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    particles.forEach(function (p) {
+      p.x += p.dx * step; p.y += p.dy * step;
+      if (p.x < 0 || p.x > canvasWidth) p.dx *= -1;
+      if (p.y < 0 || p.y > canvasHeight) p.dy *= -1;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,' + p.opacity + ')'; ctx.fill();
+    });
+    frame = requestAnimationFrame(drawParticles);
+  }
+  function syncEffects() {
+    active = effectsAllowed();
+    heroSection.classList.toggle('hero-effects-paused', !active);
+    canvas.hidden = motionQuery.matches;
+    if (!active) {
+      if (frame !== null) cancelAnimationFrame(frame);
+      if (pointerFrame !== null) cancelAnimationFrame(pointerFrame);
+      frame = pointerFrame = null; previousTime = 0;
+    } else if (frame === null && ctx) frame = requestAnimationFrame(drawParticles);
+  }
+  function placeIcons() {
+    var heroRect = heroSection.getBoundingClientRect();
+    var mobile = innerWidth < 768;
+    var obstacles = [heroSection.querySelector('.hero-content'), heroSection.querySelector('.hero-scroll-button'), header]
+      .map(function (el) {
+        var r = el.getBoundingClientRect();
+        return el === header ? { left: r.left, right: r.right, top: r.top + heroRect.top, bottom: r.bottom + heroRect.top } : r;
+      });
+    var candidates = [];
+    [0.04, 0.9, 0.13, 0.81, 0.22, 0.72, 0.31, 0.63, 0.4, 0.54].forEach(function (y) {
+      [0.06, 0.23, 0.4, 0.57, 0.74, 0.87].forEach(function (x, index) { candidates.push([x, y + (index % 3 - 1) * .014]); });
+    });
+    var used = [];
+    icons.forEach(function (icon, index) {
+      var size = mobile ? Math.min(26, Math.max(18, innerWidth * .06)) : parseFloat(icon.style.getPropertyValue('--size'));
+      var margin = mobile ? 9 : 20;
+      var position = candidates.find(function (point, i) {
+        if (used.includes(i)) return false;
+        var left = heroRect.left + point[0] * heroRect.width;
+        var top = heroRect.top + point[1] * heroRect.height;
+        return left + size + margin <= heroRect.right && top + size + margin <= heroRect.bottom &&
+          !obstacles.some(function (r) { return left - margin < r.right && left + size + margin > r.left && top - margin < r.bottom && top + size + margin > r.top; });
+      });
+      icon.toggleAttribute('data-obscured', !position);
+      if (position) {
+        used.push(candidates.indexOf(position));
+        icon.style.left = (position[0] * 100) + '%'; icon.style.top = (position[1] * 100) + '%';
+      }
+      icon.style.setProperty('--delay', (-index * 1.3) + 's');
+      icon.style.setProperty('--float-y', Math.max(-16, Math.min(-8, parseFloat(icon.style.getPropertyValue('--float-y')) || -12)) + 'px');
     });
   }
+  function resizeEffects() {
+    canvasWidth = heroSection.clientWidth; canvasHeight = heroSection.clientHeight;
+    var density = Math.min(devicePixelRatio || 1, 2);
+    canvas.width = Math.round(canvasWidth * density); canvas.height = Math.round(canvasHeight * density);
+    if (ctx) ctx.setTransform(density, 0, 0, density, 0, 0);
+    particles = Array.from({ length: innerWidth < 768 ? 16 : 40 }, function () {
+      return { x: Math.random() * canvasWidth, y: Math.random() * canvasHeight, r: Math.random() * 1.8 + .6,
+        dx: (Math.random() - .5) * .3, dy: (Math.random() - .5) * .3, opacity: Math.random() * .4 + .1 };
+    });
+    placeIcons(); syncEffects();
+  }
+  new IntersectionObserver(function (entries) { heroVisible = entries[0].isIntersecting; if (heroVisible) placeIcons(); syncEffects(); }).observe(heroSection);
+  new MutationObserver(syncEffects).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+  document.addEventListener('visibilitychange', syncEffects);
+  motionQuery.addEventListener('change', syncEffects);
+  new ResizeObserver(function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(resizeEffects, 120); }).observe(heroSection);
+  window.addEventListener('resize', function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(resizeEffects, 120); });
+  document.fonts.ready.then(placeIcons);
+  heroSection.addEventListener('pointermove', function (event) {
+    if (!active || !pointerQuery.matches) return;
+    pointer = { x: event.clientX, y: event.clientY };
+    if (pointerFrame !== null) return;
+    pointerFrame = requestAnimationFrame(function () {
+      pointerFrame = null;
+      var rect = heroSection.getBoundingClientRect();
+      var x = (pointer.x - rect.left) / rect.width - .5, y = (pointer.y - rect.top) / rect.height - .5;
+      blobs.forEach(function (blob, index) { var distance = index ? -16 : 20; blob.style.transform = 'translate(' + x * distance + 'px,' + y * distance + 'px)'; });
+    });
+  });
+  heroSection.addEventListener('pointerleave', function () { blobs.forEach(function (blob) { blob.style.transform = ''; }); });
+  resizeEffects();
 
   var typingEl = document.getElementById('hero-typed');
   if (typingEl && !prefersReducedMotion) {
@@ -123,6 +155,7 @@
     var deleting    = false;
 
     function typeLoop() {
+      if (motionQuery.matches) { typingEl.textContent = 'Full-Stack Developer'; setTimeout(typeLoop, 1000); return; }
       var current = phrases[phraseIndex];
       if (!deleting) {
         typingEl.textContent = current.substring(0, charIndex + 1);
@@ -174,6 +207,7 @@
       var inner = card.querySelector('.project-card-body');
       var shine = card.querySelector('.card-glare');
       card.addEventListener('mousemove', function (e) {
+        if (!pointerQuery.matches || motionQuery.matches) return;
         var rect    = card.getBoundingClientRect();
         var x       = e.clientX - rect.left;
         var y       = e.clientY - rect.top;
@@ -374,11 +408,18 @@ function makeTechIcon(tag) {
 }
 
 var modalCloseTimer = null;
+var modalTrigger = null;
+var modalBackground = [];
+var modalScrollY = 0;
 
-function openProjectModal(id) {
+function openProjectModal(id, trigger) {
   var data  = projectsData[id];
   if (!data) return;
 
+  if (!document.body.classList.contains('modal-open')) {
+    modalTrigger = trigger ? (trigger.matches('button') ? trigger : trigger.querySelector('button')) : document.activeElement;
+    modalScrollY = window.scrollY;
+  }
   var previewStack = document.getElementById('modal-preview-stack');
   if (previewStack) {
     previewStack.innerHTML = '';
@@ -449,6 +490,15 @@ function openProjectModal(id) {
 
   document.body.style.overflow = 'hidden';
   document.body.classList.add('modal-open');
+  document.body.style.position = 'fixed';
+  document.body.style.top = -modalScrollY + 'px';
+  document.body.style.width = '100%';
+  if (!modalBackground.length) {
+    modalBackground = Array.from(document.body.children).filter(function (el) { return el !== modal && el.tagName !== 'SCRIPT'; })
+      .map(function (el) { var state = { el: el, inert: el.inert }; el.inert = true; return state; });
+  }
+  modal.querySelector('.modal-right-pane').scrollTop = 0;
+  modal.querySelector('.modal-close-btn').focus({ preventScroll: true });
 }
 
 function closeProjectModal() {
@@ -456,14 +506,19 @@ function closeProjectModal() {
   var card  = document.getElementById('modal-inner');
   if (!modal || !card) return;
 
+  if (!modal.classList.contains('is-open')) return;
   modal.classList.remove('is-visible');
   if (modalCloseTimer) clearTimeout(modalCloseTimer);
   modalCloseTimer = setTimeout(function () {
     modal.classList.remove('is-open');
     document.body.style.overflow = '';
     document.body.classList.remove('modal-open');
+    document.body.style.position = ''; document.body.style.top = ''; document.body.style.width = '';
+    modalBackground.forEach(function (state) { state.el.inert = state.inert; }); modalBackground = [];
+    window.scrollTo({ top: modalScrollY, behavior: 'instant' });
+    if (modalTrigger && modalTrigger.isConnected) modalTrigger.focus({ preventScroll: true });
     modalCloseTimer = null;
-  }, 360);
+  }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 360);
 }
 
 var modalEl = document.getElementById('project-modal');
@@ -474,7 +529,14 @@ if (modalEl) {
 }
 
 document.addEventListener('keydown', function (e) {
+  if (!modalEl.classList.contains('is-open')) return;
   if (e.key === 'Escape') closeProjectModal();
+  if (e.key === 'Tab') {
+    var items = Array.from(modalEl.querySelectorAll('button, a[href]')).filter(function (el) { return el.getClientRects().length && !el.disabled; });
+    var first = items[0], last = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
 });
 
 window.openProjectModal  = openProjectModal;

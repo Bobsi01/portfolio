@@ -103,3 +103,11 @@
 - Changed GitHub Pages publishing from legacy branch builds to the existing GitHub Actions workflow using GitHub CLI. Custom domain remains unset.
 - Preserved portfolio content, project links, assets, and VPS history. No VPS or DNS changes were made.
 - Verified local HTML asset references and git diff whitespace checks before deployment. The deployed commit is the commit containing this entry.
+
+## 2026-09-06 - Responsive portfolio and floating effects
+
+- Added compact mobile navigation with theme access; repaired narrow contact layout, reveal overflow, anchor spacing and section scrolling.
+- Bounded project dialogs to the viewport, fixed light/dark selectors and inline icon styling, and added focus containment, background inertness and scroll restoration.
+- Vendored 18 hero SVGs with licenses; introduced collision-aware placement, quieter mobile animation, and shared pause/resume for inactive effects.
+- Local verification and remaining physical-device checks are recorded in docs/responsive-qa-2026-09-06.md. No VPS or DNS changes were made.
+- Deployment source is the commit containing this entry, published through the existing GitHub Pages workflow after local validation.

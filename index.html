@@ -2,7 +2,7 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Daniel D. Bobis — 3rd-Year CS Student & Full-Stack Developer building enterprise platforms, AI-powered tools, and creative web experiences.">
   <link rel="canonical" href="https://bobsi01.github.io/portfolio/">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -43,7 +43,7 @@
     };
   </script>
 
-  <link rel="stylesheet" href="styles.css?v=20260525-12">
+  <link rel="stylesheet" href="styles.css?v=20260906-1">
 </head>
 
 <body class="site-body">
@@ -90,12 +90,14 @@
   </button>
 
   <header class="floating-header" id="floating-header">
-    <nav class="floating-nav" aria-label="Main navigation">
+    <button class="mobile-menu-button" id="mobile-menu-button" aria-expanded="false" aria-controls="main-navigation">Menu</button>
+    <nav class="floating-nav" id="main-navigation" aria-label="Main navigation">
       <a href="#hero"     class="nav-link active">Home</a>
       <a href="#about"    class="nav-link">About Me</a>
       <a href="#projects" class="nav-link">Projects</a>
       <a href="#skills"   class="nav-link">Skills</a>
       <a href="#contact"  class="nav-link">Contact</a>
+      <button class="mobile-theme-button" id="mobile-theme-toggle" aria-pressed="false">Dark theme</button>
     </nav>
   </header>
 
@@ -110,58 +112,58 @@
 
         <div class="tech-icons" aria-hidden="true">
         <div class="tech-icon" style="--x:8%;--y:18%;--size:56px;--delay:0s;--dur:14s;--float-y:-14px">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="">
+          <img src="assets/tech/github-original.svg" width="56" height="56" decoding="async" alt="">
         </div>
         <div class="tech-icon" style="--x:82%;--y:10%;--size:52px;--delay:0.8s;--dur:16s;--float-y:-16px">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="">
+          <img src="assets/tech/python-original.svg" width="56" height="56" decoding="async" alt="">
         </div>
         <div class="tech-icon" style="--x:4%;--y:55%;--size:44px;--delay:1.5s;--dur:13s;--float-y:-12px">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg" alt="">
+          <img src="assets/tech/javascript-plain.svg" width="56" height="56" decoding="async" alt="">
         </div>
         <div class="tech-icon" style="--x:88%;--y:48%;--size:58px;--delay:2s;--dur:17s;--float-y:-18px">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="">
+          <img src="assets/tech/react-original.svg" width="56" height="56" decoding="async" alt="">
         </div>
         <div class="tech-icon" style="--x:14%;--y:78%;--size:40px;--delay:0.5s;--dur:15s;--float-y:-10px">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-plain.svg" alt="">
+          <img src="assets/tech/php-plain.svg" width="56" height="56" decoding="async" alt="">
         </div>
         <div class="tech-icon" style="--x:75%;--y:76%;--size:48px;--delay:1.2s;--dur:16s;--float-y:-15px">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="">
+          <img src="assets/tech/postgresql-original.svg" width="56" height="56" decoding="async" alt="">
         </div>
         <div class="tech-icon" style="--x:46%;--y:82%;--size:44px;--delay:3s;--dur:14.5s;--float-y:-12px">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="">
+          <img src="assets/tech/mysql-original.svg" width="56" height="56" decoding="async" alt="">
         </div>
         <div class="tech-icon" style="--x:58%;--y:6%;--size:42px;--delay:2.5s;--dur:13.5s;--float-y:-12px">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="">
+          <img src="assets/tech/java-original.svg" width="56" height="56" decoding="async" alt="">
         </div>
         <div class="tech-icon" style="--x:30%;--y:70%;--size:46px;--delay:1.8s;--dur:14s;--float-y:-11px">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg" alt="">
+          <img src="assets/tech/laravel-original.svg" width="56" height="56" decoding="async" alt="">
         </div>
         <div class="tech-icon" style="--x:23%;--y:34%;--size:42px;--delay:2.2s;--dur:15.5s;--float-y:-13px">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="">
+          <img src="assets/tech/typescript-original.svg" width="56" height="56" decoding="async" alt="">
         </div>
         <div class="tech-icon" style="--x:68%;--y:28%;--size:46px;--delay:3.4s;--dur:17.5s;--float-y:-15px">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="">
+          <img src="assets/tech/docker-original.svg" width="56" height="56" decoding="async" alt="">
         </div>
         <div class="tech-icon" style="--x:92%;--y:72%;--size:42px;--delay:4.2s;--dur:16.5s;--float-y:-12px">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="">
+          <img src="assets/tech/tailwindcss-original.svg" width="56" height="56" decoding="async" alt="">
         </div>
         <div class="tech-icon" style="--x:38%;--y:16%;--size:44px;--delay:3.8s;--dur:18s;--float-y:-14px">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="">
+          <img src="assets/tech/nodejs-original.svg" width="56" height="56" decoding="async" alt="">
         </div>
         <div class="tech-icon" style="--x:62%;--y:66%;--size:42px;--delay:4.8s;--dur:15s;--float-y:-11px">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg" alt="">
+          <img src="assets/tech/fastapi-original.svg" width="56" height="56" decoding="async" alt="">
         </div>
         <div class="tech-icon" style="--x:18%;--y:46%;--size:44px;--delay:5.2s;--dur:18.5s;--float-y:-13px">
-          <img src="https://cdn.simpleicons.org/githubcopilot/FFFFFF" alt="">
+          <img src="assets/tech/githubcopilot.svg" width="56" height="56" decoding="async" alt="">
         </div>
         <div class="tech-icon tech-icon--light" style="--x:72%;--y:15%;--size:42px;--delay:5.8s;--dur:19s;--float-y:-12px">
-          <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openai.svg" alt="">
+          <img src="assets/tech/openai.svg" width="56" height="56" decoding="async" alt="">
         </div>
         <div class="tech-icon" style="--x:84%;--y:62%;--size:44px;--delay:6.4s;--dur:18s;--float-y:-13px">
-          <img src="https://cdn.simpleicons.org/claude/D97757" alt="">
+          <img src="assets/tech/claude.svg" width="56" height="56" decoding="async" alt="">
         </div>
         <div class="tech-icon" style="--x:52%;--y:25%;--size:42px;--delay:7s;--dur:19.5s;--float-y:-12px">
-          <img src="https://cdn.simpleicons.org/googlegemini/8E75B2" alt="">
+          <img src="assets/tech/googlegemini.svg" width="56" height="56" decoding="async" alt="">
         </div>
       </div>
 
@@ -354,7 +356,7 @@
         <div class="projects-grid">
 
           <!-- Project 1 — HRMS -->
-          <article class="project-card cursor-pointer hover:-translate-y-1 transition-transform duration-300" onclick="openProjectModal('hrms')" data-reveal style="transition-delay:80ms">
+          <article class="project-card cursor-pointer hover:-translate-y-1 transition-transform duration-300" onclick="openProjectModal('hrms', this)" data-reveal style="transition-delay:80ms">
             <div class="project-card-body card">
               <div class="card-glare"></div>
               <div class="project-thumbnail">
@@ -378,7 +380,7 @@
                   <span class="skill-tag">FPDF</span>
                   <span class="skill-tag project-tag-overflow">+1</span>
                 </div>
-                <button onclick="openProjectModal('hrms')" class="project-link">
+                <button onclick="event.stopPropagation(); openProjectModal('hrms', this)" class="project-link">
                   View Details
                   <svg class="link-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
                 </button>
@@ -387,7 +389,7 @@
           </article>
 
           <!-- Project 2 — AGRISOS -->
-          <article class="project-card cursor-pointer hover:-translate-y-1 transition-transform duration-300" onclick="openProjectModal('agrisos')" data-reveal style="transition-delay:160ms">
+          <article class="project-card cursor-pointer hover:-translate-y-1 transition-transform duration-300" onclick="openProjectModal('agrisos', this)" data-reveal style="transition-delay:160ms">
             <div class="project-card-body card">
               <div class="card-glare"></div>
               <div class="project-thumbnail">
@@ -410,7 +412,7 @@
                   <span class="skill-tag">PostgreSQL</span>
                   <span class="skill-tag project-tag-overflow">+4</span>
                 </div>
-                <button onclick="openProjectModal('agrisos')" class="project-link">
+                <button onclick="event.stopPropagation(); openProjectModal('agrisos', this)" class="project-link">
                   View Details
                   <svg class="link-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
                 </button>
@@ -419,7 +421,7 @@
           </article>
 
           <!-- Project 3 — Student Record Management -->
-          <article class="project-card cursor-pointer hover:-translate-y-1 transition-transform duration-300" onclick="openProjectModal('records')" data-reveal style="transition-delay:240ms">
+          <article class="project-card cursor-pointer hover:-translate-y-1 transition-transform duration-300" onclick="openProjectModal('records', this)" data-reveal style="transition-delay:240ms">
             <div class="project-card-body card">
               <div class="card-glare"></div>
               <div class="project-thumbnail">
@@ -443,7 +445,7 @@
                   <span class="skill-tag">Tailwind CSS</span>
                   <span class="skill-tag project-tag-overflow">+2</span>
                 </div>
-                <button onclick="openProjectModal('records')" class="project-link">
+                <button onclick="event.stopPropagation(); openProjectModal('records', this)" class="project-link">
                   View Details
                   <svg class="link-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
                 </button>
@@ -452,7 +454,7 @@
           </article>
 
           <!-- Project 4 — CML Management System -->
-          <article class="project-card cursor-pointer hover:-translate-y-1 transition-transform duration-300" onclick="openProjectModal('cml')" data-reveal style="transition-delay:320ms">
+          <article class="project-card cursor-pointer hover:-translate-y-1 transition-transform duration-300" onclick="openProjectModal('cml', this)" data-reveal style="transition-delay:320ms">
             <div class="project-card-body card">
               <div class="card-glare"></div>
               <div class="project-thumbnail">
@@ -476,7 +478,7 @@
                   <span class="skill-tag">Reverb</span>
                   <span class="skill-tag project-tag-overflow">+1</span>
                 </div>
-                <button onclick="openProjectModal('cml')" class="project-link">
+                <button onclick="event.stopPropagation(); openProjectModal('cml', this)" class="project-link">
                   View Details
                   <svg class="link-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
                 </button>
@@ -744,7 +746,7 @@
     </div>
   </div>
 
-  <script src="script.js?v=20260525-5"></script>
+  <script src="script.js?v=20260906-1"></script>
 
 </body>
 </html>
