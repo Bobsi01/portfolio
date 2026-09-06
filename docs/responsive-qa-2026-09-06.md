@@ -29,3 +29,9 @@ The existing colorful developer identity supplies the visual direction: ENERGY 2
 - PASS, theme resilience: root-scoped light selectors no longer override dark dialogs.
 
 Physical Safari/iOS safe-area and browser-toolbar behavior, actual 200% browser zoom, OS reduced-motion switching, and device frame-rate/energy profiling remain unverified. No numerical speedup or FPS claim is made. The existing Tailwind Play CDN production warning remains outside this responsive change.
+
+## GitHub Pages verification
+
+- Deployment run 34011107429 succeeded for commit 305efb15a2009a55d5e3e5e6fe249a2342b21b09.
+- Verified https://bobsi01.github.io/portfolio/?v=305efb1 in the internal browser at 375x667: menu expanded and closed after navigation; dialog focused Close and returned focus to View Details; document overflow was zero. All hero icons used the local Pages asset paths with no broken images.
+- At 844x390 the dialog bottom was within the viewport and keyboard navigation reached the live-project action. No live console errors were recorded.
